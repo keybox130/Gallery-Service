@@ -1,7 +1,5 @@
 const mongoose = require('mongoose');
-require
-//
-mongoose.connect('mongodb://localhost:3001/gallery', { useNewUrlParser: true });
+mongoose.connect('mongodb://localhost/gallery', { useNewUrlParser: true });
 
 // Connection shortcut
 const db = mongoose.connection;

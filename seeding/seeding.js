@@ -15,9 +15,6 @@ console.log('Stay Name Length: ', stayName.length);
 const stayLocation = ['Sacramento', 'Angwin', 'Gualala', 'San Francisco', 'Santa Rosa', 'Garden Valley', 'Healdsburg', 'Sea Ranch', 'Sesquilé', 'Sonseca', 'DeLand Southwest', 'McKean', 'Fisher Island', 'Friendswood', 'Pewee Valley', 'Falling Waters', 'Anchor Bay', 'Poplar', 'Corona de Tucson', 'Longtown', 'Fidelity', 'Tropic', 'Pueblito del Carmen', 'Halstead', 'Tully', 'Miami Lakes', 'Maynard', 'Ocean City', 'Dillwyn', 'Lorenz Park', 'Fairacres', 'Hato Candal', 'King William', 'Springs', 'Bull Shoals', 'Upper Bear Creek', 'Watervliet', 'Grey Eagle', 'Kingston', 'Royal Lakes', 'Makakilo', 'Coffeen', 'Spangle', 'Alpine', 'Mango', 'Watsontown', 'Salmon', 'Ravalli', 'Lakewood Shores', 'Barahona', 'Locustdale', 'Dunnell', 'Chester Gap', 'North Fair Oaks', 'La Salle', 'Park Layne', 'Beechmont', 'Cornelia', 'Graceville', 'Trout Valley'];
 console.log('Stay Location Length: ', stayLocation.length);
 
-
-
-
 // Seed the DB with dummy data for react components to render out.
 
 // Random Int generator
@@ -36,31 +33,33 @@ const superHostBool = () => {
   }
   return false;
 };
-//console.log('Super Host Bool: ', superHostBool());
+// console.log('Super Host Bool: ', superHostBool());
 
-// Rating Generator
+// Rating Generator - This has to be a float
 const rating = () => randomInt(1, 5, true);
-//console.log('Random Rating: ', rating());
+// console.log('Random Rating: ', rating());
 
 // Review Count
 const reviewCount = () => randomInt(1, 300, true);
-//console.log('Review Count: ', reviewCount());
+// console.log('Review Count: ', reviewCount());
 
-// Image URL
+// This will output an Array photo OBJs 10 of them for now.
 const imageSeeder = () => {
-  // This Function will eventually return an array of objects
-  // [{
-  //   id: Number,
-  //   photo_url: String,
-  //   description: String,
-  // }]
-
   const url = 'www.aws.com/imageurl.jpg';
-  return url;
+  let result = [];
+  for (let count = 1; count < 10; count++) {
+    let obj = {
+      id: count,
+      photo_url: url,
+      description: imageDesc[randomInt(0, imageDesc.length, true)],
+    };
+    result.push(obj);
+  }
+  return result;
 };
 
 // Seed the DB
-const seedTheDB = () => {
+const dataToSeed = () => {
   let results = [];
   let count = 1;
 
@@ -74,10 +73,24 @@ const seedTheDB = () => {
     obj.rating_count = randomInt(1, 300, true);
     obj.super_host = superHostBool();
     obj.location = stayLocation[randomInt(0, stayLocation.length, true)];
-    photos = randomPhotos();
+    obj.photos = imageSeeder();
     results.push(obj);
   }
   return results;
+};
+console.log('Data to Seed: ', dataToSeed());
+
+const seedTheDB = () => {
+  let arr = dataToSeed();
+  Stay.insertMany(arr, (err, docs) => {
+    if (err) {
+      console.log(`Error in seeding JS line 86 : ${err}`);
+      // callback(err);
+    } else {
+      console.log(`Seeding success!`);
+      // callback(err, docs);
+    }
+  });
 };
 
 seedTheDB();

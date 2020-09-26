@@ -7,7 +7,7 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "seed": "npm run database/seed.js",
+    "seed": "npm run seeding/seeding.js",
     "start": "nodemon server/index.js",
     "react-dev": "webpack -d --watch"
   },
