@@ -7,7 +7,7 @@ const port = 3000;
 app.get('/stays', (req, res) => {
   Stay.find({}, (err, data) => {
     if (err) {
-      res.status(400).send('Error Find All Failed.');
+      res.status(400).send(err);
     }
     res.status(200).send(data);
   });
