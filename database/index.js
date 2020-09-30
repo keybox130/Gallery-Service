@@ -4,10 +4,10 @@ mongoose.connect('mongodb://localhost/gallery', { useNewUrlParser: true });
 // Connection shortcut
 const db = mongoose.connection;
 // Test connection
-// db.on('error', console.error.bind(console, 'connection error:'));
-// db.once('open', () => {
-//   console.log('Mongoose has connected to Mongo DB');
-// });
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', () => {
+  console.log('Mongoose has connected to Mongo DB');
+});
 
 // Define Schema
 let schema = mongoose.Schema({
