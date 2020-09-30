@@ -1,8 +1,11 @@
 const express = require('express');
+const path = require('path');
 const { Stay, db } = require('../database/index');
 
 const app = express();
 const port = 3000;
+
+app.use('/', express.static(path.join(__dirname, '../client/dist')));
 
 app.get('/stays', (req, res) => {
   Stay.find({}, (err, data) => {
