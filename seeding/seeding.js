@@ -38,7 +38,7 @@ const superHostBool = () => {
 // console.log('Super Host Bool: ', superHostBool());
 
 // Rating Generator - This has to be a float
-const rating = () => randomInt(1, 5, true);
+const rating = () => randomInt(3, 5, true);
 // console.log('Random Rating: ', rating());
 
 // Review Count
