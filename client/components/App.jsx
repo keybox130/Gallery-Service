@@ -9,21 +9,21 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    //getChosenStay();
+    // getChosenStay();
   }
 
-  getChosenStay() {
+  this.getChosenStay() {
     axios.get('/stays')
-    .then(function (response) {
-    // handle success
-    })
-    .catch(function (error) {
-    // handle error
-    console.log(error);
-    })
-    .then(function () {
-    // always executed
-    });
+      .then(function (response) {
+        // handle success
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      })
+      .then(function () {
+        // always executed
+      });
   }
 
   render() {
@@ -34,3 +34,4 @@ class App extends React.Component {
 }
 
 export default App;
+
