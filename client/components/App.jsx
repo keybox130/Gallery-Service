@@ -35,19 +35,6 @@ class App extends React.Component {
     this.getStay(99);
   }
 
-  // getAllStays() {
-  //   axios.get('/stays')
-  //     .then((response) => {
-  //       this.setState({
-  //         stay: response.data[3],
-  //       });
-  //     })
-  //     .catch((error) => {
-  //       // handle error
-  //       console.log(error);
-  //     });
-  // }
-
   // Gets selected stay
   getStay(roomId) {
     axios(`/stays/${roomId}`)

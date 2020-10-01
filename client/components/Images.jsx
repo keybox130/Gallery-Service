@@ -8,7 +8,8 @@ const HomeImages = styled.div`
   border-radius: 20px;
   overflow:hidden;
   img:hover{
-  filter: brightness(90%);
+  filter: brightness(85%);
+  transition: 350ms ease;
   }
 `;
 
@@ -16,13 +17,22 @@ const HomeImg1 = styled.img`
 width: 560px;
 height:560px;
 object-fit: cover;
-margin-right: 5px;
+margin-right: 0px;
 `;
 const HomeImg2 = styled.img`
 width: 272px;
-height:272px;
+height:275px;
 object-fit: cover;
-margin: 5px;
+margin-left: 10px;
+margin-top:0px
+margin-bottom: 5px;
+`;
+const HomeImg3 = styled.img`
+width: 272px;
+height:275px;
+object-fit: cover;
+margin-top:10px;
+margin-left: 10px;
 `;
 
 const LeftCol = styled.div`
@@ -48,11 +58,11 @@ class Images extends React.Component {
           <HomeImg1 id="main" src={`${this.props.photos[0].photo_url}`} alt="Stay here" />
           <LeftCol>
             <HomeImg2 id="topLeft" src={`${this.props.photos[1].photo_url}`} alt="Stay here" />
-            <HomeImg2 id="topRight" src={`${this.props.photos[2].photo_url}`} alt="Stay here" />
+            <HomeImg3 id="bttmLeft" src={`${this.props.photos[2].photo_url}`} alt="Stay here" />
           </LeftCol>
           <RightCol>
-            <HomeImg2 id="bttmLeft" src={`${this.props.photos[3].photo_url}`} alt="Stay here" />
-            <HomeImg2 id="bttmRight" src={`${this.props.photos[4].photo_url}`} alt="Stay here" />
+            <HomeImg2 id="topRight" src={`${this.props.photos[3].photo_url}`} alt="Stay here" />
+            <HomeImg3 id="bttmRight" src={`${this.props.photos[4].photo_url}`} alt="Stay here" />
           </RightCol>
         </HomeImages>
       </>
