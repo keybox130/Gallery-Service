@@ -1,37 +1,41 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Header from './Header.jsx';
+const axios = require('axios');
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      stay: {},
+    };
+    this.getAllStays = this.getAllStays.bind(this);
   }
 
   componentDidMount() {
-    // getChosenStay();
+    this.getAllStays();
   }
 
-  this.getChosenStay() {
+  // eslint-disable-next-line class-methods-use-this
+  getAllStays() {
     axios.get('/stays')
-      .then(function (response) {
-        // handle success
+      .then((response) => {
+        this.setState({
+          stay: response.data[3],
+        });
       })
-      .catch(function (error) {
+      .catch((error) => {
         // handle error
         console.log(error);
-      })
-      .then(function () {
-        // always executed
       });
   }
 
   render() {
+    const { title, rating,rating_count, super_host, location } = this.state.stay;
     return (
-        <Header></Header>
+        <Header title={title} rating={rating} rating_count={rating_count} super_host={super_host} location={location}></Header>
     );
   }
 }
 
 export default App;
-

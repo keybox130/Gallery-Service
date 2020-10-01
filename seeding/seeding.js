@@ -14,9 +14,8 @@ const stayName = ['Charming Craftsman East Sac/Midtown Apartment', 'Cozy Napa Wi
 
 // Super Host
 const stayLocation = ['Sacramento', 'Angwin', 'Gualala', 'San Francisco', 'Santa Rosa', 'Garden Valley', 'Healdsburg', 'Sea Ranch', 'Sesquilé', 'Sonseca', 'DeLand Southwest', 'McKean', 'Fisher Island', 'Friendswood', 'Pewee Valley', 'Falling Waters', 'Anchor Bay', 'Poplar', 'Corona de Tucson', 'Longtown', 'Fidelity', 'Tropic', 'Pueblito del Carmen', 'Halstead', 'Tully', 'Miami Lakes', 'Maynard', 'Ocean City', 'Dillwyn', 'Lorenz Park', 'Fairacres', 'Hato Candal', 'King William', 'Springs', 'Bull Shoals', 'Upper Bear Creek', 'Watervliet', 'Grey Eagle', 'Kingston', 'Royal Lakes', 'Makakilo', 'Coffeen', 'Spangle', 'Alpine', 'Mango', 'Watsontown', 'Salmon', 'Ravalli', 'Lakewood Shores', 'Barahona', 'Locustdale', 'Dunnell', 'Chester Gap', 'North Fair Oaks', 'La Salle', 'Park Layne', 'Beechmont', 'Cornelia', 'Graceville', 'Trout Valley'];
-// console.log('Stay Location Length: ', stayLocation.length);
 
-// Seed the DB with dummy data for react components to render out.
+const stayStateCountry = ', California, United States';
 
 // Random Int generator
 const randomInt = (min, max, floor) => {
@@ -70,10 +69,10 @@ const dataToSeed = () => {
     count++;
     obj.room_id = count;
     obj.title = stayName[randomInt(0, stayName.length, true)];
-    obj.rating = randomInt(0, 5, true);
-    obj.rating_count = randomInt(1, 300, true);
+    obj.rating = randomInt(3, 5, false);
+    obj.rating_count = randomInt(10, 300, true);
     obj.super_host = superHostBool();
-    obj.location = stayLocation[randomInt(0, stayLocation.length, true)];
+    obj.location = stayLocation[randomInt(0, stayLocation.length, true)].concat(stayStateCountry);
     obj.photos = imageSeeder();
     results.push(obj);
   }
