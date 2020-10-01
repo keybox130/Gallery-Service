@@ -4,7 +4,11 @@ import styled from 'styled-components';
 const HomeImgs = styled.div`
 width: 1120px;
 border-radius: 12px;
+img:hover{
+  filter: brightness(80%);
+}
 `;
+
 const HomeImg1 = styled.img`
 width: 560px;
 height:560px;

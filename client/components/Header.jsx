@@ -22,12 +22,10 @@ text-decoration: underline;
 const Share = styled.p`
 font-size: 1em;
 font-family: 'Montserrat', sans-serif;
-font-color: green;
 `;
 const Save = styled.p`
 font-size: 1em;
 font-family: 'Montserrat', sans-serif;
-font-color: green;
 `;
 class Header extends React.Component {
   constructor(props) {
