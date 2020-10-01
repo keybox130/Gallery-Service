@@ -10,7 +10,6 @@ const HomeImages = styled.div`
   img:hover{
   filter: brightness(80%);
   }
-
 `;
 
 const HomeImg1 = styled.img`
