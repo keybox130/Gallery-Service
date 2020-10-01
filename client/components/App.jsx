@@ -7,6 +7,14 @@ import styled from 'styled-components';
 
 const axios = require('axios');
 
+const Master = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+`;
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -54,10 +62,10 @@ class App extends React.Component {
     let images = this.state.stay ? <Images photos={this.state.stay.photos} /> :
     <h1>Loading Images...</h1>;
     return (
-      <>
-      <div>{header}</div>
-      <div>{images}</div>
-      </>
+      <Master>
+        <div>{header}</div>
+        <div>{images}</div>
+      </Master>
     );
   }
 }

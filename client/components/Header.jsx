@@ -1,8 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
-// Main FlexRow, containing 1) FlexRow w Reviews & City, 2)
-// FlexRow w/ Share & Savejustify-content: space-between;
+const HeaderImg = styled.div`
+height: 100px;
+background-image: url("header.png");
+background-repeat: no-repeat;
+background-size: auto 100px;
+`;
 
 const HeaderContent = styled.div`
   width: 1120px;
@@ -16,7 +20,7 @@ font-size: 2em;
 font-family: 'Montserrat', sans-serif;
 `;
 const Rating = styled.p`
-font-size: 1em;
+font-size:14px;
 font-family: 'Montserrat', sans-serif;
 flex-direction:row;
 margin-right: 10px;
@@ -29,11 +33,11 @@ margin-right: 10px;
 margin-top: 17px;
 `;
 const Location = styled.p`
-font-size: 1em;
+font-size: 14px;
 font-family: 'Montserrat', sans-serif;
+color: #6e6e6e;
 text-decoration: underline;
 flex-direction:row;
-
 `;
 
 const RatingLocation = styled.div`
@@ -44,14 +48,17 @@ flex-direction: row;
 const ShareSave = styled.div`
 display: flex;
 flex-direction:row;
+text-decoration: underline;
 `;
 const Share = styled.p`
-font-size: 1em;
 font-family: 'Montserrat', sans-serif;
 margin-right: 10px;
+font-size 14px;
+text-decoration: underline;
 `;
 const Save = styled.p`
-font-size: 1em;
+text-decoration: underline;
+font-size 14px;
 font-family: 'Montserrat', sans-serif;
 `;
 class Header extends React.Component {
@@ -64,6 +71,7 @@ class Header extends React.Component {
     const { title, rating, rating_count, super_host, location } = this.props.stay;
     return (
       <div>
+        <HeaderImg></HeaderImg>
         <StayName>{title}</StayName>
         <HeaderContent>
           <RatingLocation>

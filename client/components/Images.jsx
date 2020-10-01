@@ -8,7 +8,7 @@ const HomeImages = styled.div`
   border-radius: 12px;
   overflow:hidden;
   img:hover{
-  filter: brightness(80%);
+  filter: brightness(90%);
   }
 `;
 
