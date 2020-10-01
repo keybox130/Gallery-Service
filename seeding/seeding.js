@@ -62,11 +62,9 @@ const imageSeeder = () => {
 // Seed the DB
 const dataToSeed = () => {
   let results = [];
-  let count = 1;
 
-  for (let count = 0; count < 100; count++) {
+  for (let count = 1; count < 101; count++) {
     let obj = {};
-    count++;
     obj.room_id = count;
     obj.title = stayName[randomInt(0, stayName.length, true)];
     obj.rating = randomInt(3, 5, false);

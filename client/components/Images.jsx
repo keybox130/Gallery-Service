@@ -5,7 +5,7 @@ const HomeImages = styled.div`
   display:flex;
   align-items: flex-start;
   width: 1120px;
-  border-radius: 12px;
+  border-radius: 20px;
   overflow:hidden;
   img:hover{
   filter: brightness(90%);

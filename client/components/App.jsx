@@ -14,6 +14,12 @@ const Master = styled.div`
   align-items: center;
   justify-content: center;
 `;
+const HeaderImg = styled.div`
+height: 100px;
+background-image: url("header.png");
+background-repeat: no-repeat;
+background-size: auto 100px;
+`;
 
 class App extends React.Component {
   constructor(props) {
@@ -26,7 +32,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.getStay(5);
+    this.getStay(99);
   }
 
   // getAllStays() {
@@ -62,10 +68,13 @@ class App extends React.Component {
     let images = this.state.stay ? <Images photos={this.state.stay.photos} /> :
     <h1>Loading Images...</h1>;
     return (
+      <>
+      <HeaderImg></HeaderImg>
       <Master>
         <div>{header}</div>
         <div>{images}</div>
       </Master>
+      </>
     );
   }
 }

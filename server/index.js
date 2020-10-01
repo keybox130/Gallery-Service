@@ -16,6 +16,18 @@ app.get('/stays', (req, res) => {
   });
 });
 
+app.get('/stays/:roomId', (req, res) => {
+  const { roomId } = req.params;
+  Stay.find({ room_id: roomId }).exec((err, data) => {
+    if (err) {
+      res.status(400).send(err);
+    } else {
+      console.log(data);
+      res.status(200).send(data);
+    }
+  });
+});
+
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
