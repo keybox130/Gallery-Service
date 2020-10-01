@@ -1,5 +1,34 @@
 import React from 'react';
+import styled from 'styled-components';
 
+const StayName = styled.p`
+font-size: 2em;
+font-family: 'Montserrat', sans-serif;
+`;
+const Rating = styled.p`
+font-size: 1em;
+
+font-family: 'Montserrat', sans-serif;
+`;
+const RatingCount = styled.p`
+font-size: .75em;
+font-family: 'Montserrat', sans-serif;
+`;
+const Location = styled.p`
+font-size: 1em;
+font-family: 'Montserrat', sans-serif;
+text-decoration: underline;
+`;
+const Share = styled.p`
+font-size: 1em;
+font-family: 'Montserrat', sans-serif;
+font-color: green;
+`;
+const Save = styled.p`
+font-size: 1em;
+font-family: 'Montserrat', sans-serif;
+font-color: green;
+`;
 class Header extends React.Component {
   constructor(props) {
     super(props);
@@ -7,17 +36,16 @@ class Header extends React.Component {
   }
 
   render() {
-    const info = this.props;
+    const { title, rating, rating_count, super_host, location } = this.props.stay;
     return (
       <>
-        <h2>{info.title}</h2>
-        <h3>{info.rating}</h3>
-        <h3>{info.rating_count}</h3>
-        <h3>{info.super_host}</h3>
-        <h3>{info.location}</h3>
-        <h3>Share</h3>
-        <h3>Save</h3>
-        <img src="stayImgs.png"></img>
+        <StayName>{title}</StayName>
+        <Rating>{rating}</Rating>
+        <RatingCount>({rating_count})</RatingCount>
+        <h3>{super_host}</h3>
+        <Location>{location}</Location>
+        <Share>Share</Share>
+        <Save>Save</Save>
       </>
     );
   }
