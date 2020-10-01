@@ -1,14 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const HomeImgs = styled.div`
-width: 1120px;
-border-radius: 12px;
-img:hover{
-  filter: brightness(80%);
-}
-`;
-
 const HomeImg1 = styled.img`
 width: 560px;
 height:560px;
@@ -18,23 +10,27 @@ const HomeImg2 = styled.img`
 width: 272px;
 height:272px;
 object-fit: cover;
+padding: 5px;
 `;
-const HomeImg3 = styled.img`
-width: 272px;
-height:272px;
-object-fit: cover;
-`;
-const HomeImg4 = styled.img`
-width: 272px;
-height:272px;
 
-object-fit: cover;
+const HomeImages = styled.div`
+  display:flex;
+  align-items: flex-start;
+  width: 1120px;
+  border-radius: 12px;
+  img:hover{
+  filter: brightness(80%);
+  }
 `;
-const HomeImg5 = styled.img`
-width: 272px;
-height:272px;
 
-object-fit: cover;
+const LeftCol = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const RightCol = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 
 class Images extends React.Component {
@@ -45,13 +41,19 @@ class Images extends React.Component {
 
   render() {
     return (
-      <HomeImgs>
-        <HomeImg1 id="main" src={`${this.props.photos[0].photo_url}`} alt="Stay here" />
-        <HomeImg2 id="topLeft" src={`${this.props.photos[1].photo_url}`} alt="Stay here" />
-        <HomeImg3 id="topRight" src={`${this.props.photos[2].photo_url}`} alt="Stay here" />
-        <HomeImg4 id="bttmLeft" src={`${this.props.photos[3].photo_url}`} alt="Stay here" />
-        <HomeImg5 id="bttmRight" src={`${this.props.photos[4].photo_url}`} alt="Stay here" />
-      </HomeImgs>
+      <>
+        <HomeImages>
+          <HomeImg1 id="main" src={`${this.props.photos[0].photo_url}`} alt="Stay here" />
+          <LeftCol>
+            <HomeImg2 id="topLeft" src={`${this.props.photos[1].photo_url}`} alt="Stay here" />
+            <HomeImg2 id="topRight" src={`${this.props.photos[2].photo_url}`} alt="Stay here" />
+          </LeftCol>
+          <RightCol>
+            <HomeImg2 id="bttmLeft" src={`${this.props.photos[3].photo_url}`} alt="Stay here" />
+            <HomeImg2 id="bttmRight" src={`${this.props.photos[4].photo_url}`} alt="Stay here" />
+          </RightCol>
+        </HomeImages>
+      </>
     );
   }
 }

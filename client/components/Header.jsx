@@ -1,6 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
+// Main FlexRow, containing 1) FlexRow w Reviews & City, 2)
+// FlexRow w/ Share & Savejustify-content: space-between;
+
+const HeaderContent = styled.div`
+  display: flex;
+`;
 const StayName = styled.p`
 font-size: 2em;
 font-family: 'Montserrat', sans-serif;
@@ -36,15 +42,17 @@ class Header extends React.Component {
   render() {
     const { title, rating, rating_count, super_host, location } = this.props.stay;
     return (
-      <>
+      <div>
         <StayName>{title}</StayName>
-        <Rating>{rating}</Rating>
-        <RatingCount>({rating_count})</RatingCount>
-        <h3>{super_host}</h3>
-        <Location>{location}</Location>
-        <Share>Share</Share>
-        <Save>Save</Save>
-      </>
+        <HeaderContent>
+          <Rating>{rating}</Rating>
+          <RatingCount>({rating_count})</RatingCount>
+          <h3>{super_host}</h3>
+          <Location>{location}</Location>
+          <Share>Share</Share>
+          <Save>Save</Save>
+        </HeaderContent>
+      </div>
     );
   }
 }
