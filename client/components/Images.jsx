@@ -1,26 +1,29 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const HomeImg1 = styled.img`
-width: 560px;
-height:560px;
-object-fit: cover;
-`;
-const HomeImg2 = styled.img`
-width: 272px;
-height:272px;
-object-fit: cover;
-padding: 5px;
-`;
-
 const HomeImages = styled.div`
   display:flex;
   align-items: flex-start;
   width: 1120px;
   border-radius: 12px;
+  overflow:hidden;
   img:hover{
   filter: brightness(80%);
   }
+
+`;
+
+const HomeImg1 = styled.img`
+width: 560px;
+height:560px;
+object-fit: cover;
+margin-right: 5px;
+`;
+const HomeImg2 = styled.img`
+width: 272px;
+height:272px;
+object-fit: cover;
+margin: 5px;
 `;
 
 const LeftCol = styled.div`
