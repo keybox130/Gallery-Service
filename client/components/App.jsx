@@ -1,9 +1,8 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import styled from 'styled-components';
 import Header from './Header.jsx';
 import Images from './Images.jsx';
-
-import styled from 'styled-components';
+import GalleryModal from './GalleryModal.jsx';
 
 const axios = require('axios');
 
@@ -26,11 +25,12 @@ class App extends React.Component {
     super(props);
     this.state = {
       stay: null,
+      galleryShown: false,
     };
-    // this.getAllStays = this.getAllStays.bind(this);
     this.getStay = this.getStay.bind(this);
   }
 
+  // Invokes getStay with hardcoded stay
   componentDidMount() {
     this.getStay(99);
   }
@@ -49,18 +49,18 @@ class App extends React.Component {
   }
 
   render() {
-    // console.log(this.state.stay);
-    // If state.stay is defined proceed with header component.
-    let header = this.state.stay ? <Header stay={this.state.stay} /> : <h1>Loading...</h1>;
-    let images = this.state.stay ? <Images photos={this.state.stay.photos} /> :
-    <h1>Loading Images...</h1>;
+    // If state.stay is true proceed with rendering header component, else show loading.
+    const { stay } = this.state;
+    const header = stay ? <Header stay={stay} /> : <h1>Loading...</h1>;
+    const images = stay ? <Images photos={stay.photos} />
+      : <h1>Loading Images...</h1>;
     return (
       <>
-      <HeaderImg></HeaderImg>
-      <Master>
-        <div>{header}</div>
-        <div>{images}</div>
-      </Master>
+        <HeaderImg />
+        <Master>
+          <div>{header}</div>
+          <div>{images}</div>
+        </Master>
       </>
     );
   }

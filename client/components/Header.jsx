@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const HeaderContent = styled.div`
@@ -95,8 +96,9 @@ class Header extends React.Component {
   }
 
   render() {
-    const { title, rating, rating_count, super_host, location } = this.props.stay;
-    let Superhost = this.props.stay.super_host ? <><SuperHostIcon></SuperHostIcon><SuperHost>Superhost</SuperHost></> : <div />;
+    const {
+      title, rating, rating_count, super_host, location } = this.props.stay;
+    let Superhost = super_host ? <><SuperHostIcon></SuperHostIcon><SuperHost>Superhost</SuperHost></> : <div />;
     return (
       <div>
         <StayName>{title}</StayName>
@@ -117,4 +119,9 @@ class Header extends React.Component {
     );
   }
 }
+
+// Header.propTypes = {
+//   stay.title: PropTypes.string.isRequired,
+//   rating: PropTypes.string.isRequired,
+// };
 export default Header;

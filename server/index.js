@@ -22,7 +22,6 @@ app.get('/stays/:roomId', (req, res) => {
     if (err) {
       res.status(400).send(err);
     } else {
-      console.log(data);
       res.status(200).send(data);
     }
   });
