@@ -22,7 +22,13 @@ const Master = styled.div`
   justify-content: center;
 `;
 const GalleryModalDiv = styled.div`
- z-index: 2;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
 `;
 
 class App extends React.Component {
@@ -74,16 +80,16 @@ class App extends React.Component {
       : <h1>Loading Images...</h1>;
     // If state.show is true render GalleryModal, else: Empty Div.
     const gallerymodal = galleryShown
-      ? (<GalleryModal photos={stay.photos} imageSelected={imageChosen} />)
+      ? (<GalleryModal photos={stay.photos} imageSelected={imageChosen} toggleMod={this.toggleModal}/>)
       : <div />;
     return (
       <>
+      <GalleryModalDiv>{gallerymodal}</GalleryModalDiv>
         <HeaderImg />
         <Master>
           <div>{header}</div>
           <div>{images}</div>
         </Master>
-        <GalleryModalDiv>{gallerymodal}</GalleryModalDiv>
       </>
     );
   }
