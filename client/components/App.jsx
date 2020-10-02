@@ -6,18 +6,23 @@ import GalleryModal from './GalleryModal.jsx';
 
 const axios = require('axios');
 
+const HeaderImg = styled.div`
+height: 100px;
+background-image: url("header.png");
+background-repeat: no-repeat;
+background-size: auto 100px;
+`;
+
 const Master = styled.div`
+  z-index: 1;
   display: flex;
   flex-direction: column;
   width: 100%;
   align-items: center;
   justify-content: center;
 `;
-const HeaderImg = styled.div`
-height: 100px;
-background-image: url("header.png");
-background-repeat: no-repeat;
-background-size: auto 100px;
+const GalleryModalDiv = styled.div`
+ z-index: 2;
 `;
 
 class App extends React.Component {
@@ -26,8 +31,10 @@ class App extends React.Component {
     this.state = {
       stay: null,
       galleryShown: false,
+      imageChosen: null,
     };
     this.getStay = this.getStay.bind(this);
+    this.toggleModal = this.toggleModal.bind(this);
   }
 
   // Invokes getStay with hardcoded stay
@@ -48,12 +55,27 @@ class App extends React.Component {
       });
   }
 
+  toggleModal(e) {
+    const { galleryShown } = this.state;
+    const { id } = e.target;
+    this.setState({
+      galleryShown: !galleryShown,
+      imageChosen: id,
+    });
+  }
+
   render() {
+    // destructure state properties
+    const { imageChosen, stay, galleryShown } = this.state;
     // If state.stay is true proceed with rendering header component, else show loading.
-    const { stay } = this.state;
     const header = stay ? <Header stay={stay} /> : <h1>Loading...</h1>;
-    const images = stay ? <Images photos={stay.photos} />
+    // If state.stay is true proceed with rendering images component, else show loading.
+    const images = stay ? <Images toggleMod={this.toggleModal} photos={stay.photos} />
       : <h1>Loading Images...</h1>;
+    // If state.show is true render GalleryModal, else: Empty Div.
+    const gallerymodal = galleryShown
+      ? (<GalleryModal photos={stay.photos} imageSelected={imageChosen} />)
+      : <div />;
     return (
       <>
         <HeaderImg />
@@ -61,6 +83,7 @@ class App extends React.Component {
           <div>{header}</div>
           <div>{images}</div>
         </Master>
+        <GalleryModalDiv>{gallerymodal}</GalleryModalDiv>
       </>
     );
   }
