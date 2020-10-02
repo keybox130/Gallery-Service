@@ -1,7 +1,7 @@
 {
   "name": "gallery-service",
   "description": "> Project description",
-  "author": "",
+  "author": "Emmanuel Mota",
   "license": "ISC",
   "babel": {
     "presets": [
