@@ -39,15 +39,19 @@ const CloseButton = styled.button`
 `;
 
 const PreviousButton = styled.button`
-width: 100px;
+  width: 100px;
   height:35px;
   font-family: 'Montserrat', sans-serif;
+  border: none;
+  margin-right:25px;
 `;
 
 const NextButton = styled.button`
   width: 100px;
   height:35px;
   font-family: 'Montserrat', sans-serif;
+  border: none;
+  margin-left: 25px;
 `;
   // const imgRow = styled.div`
   // display: flex;
@@ -99,7 +103,7 @@ class GalleryModal extends React.Component {
     const previousButton = imageSelected === 0 ? <div />
       : (
         <PreviousButton id="Back" onClick={this.backOrForth}>
-          B
+          &#60;
         </PreviousButton>
       );
 
@@ -107,7 +111,7 @@ class GalleryModal extends React.Component {
     const nextButton = imageSelected === lastImageID - 1 ? <div />
       : (
         <NextButton id="Forward" onClick={this.backOrForth}>
-          K
+          &#62;
         </NextButton>
       );
 

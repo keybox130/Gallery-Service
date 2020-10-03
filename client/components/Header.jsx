@@ -111,7 +111,7 @@ class Header extends React.Component {
             <Location>{location}</Location>
           </RatingLocation>
           <ShareSave>
-            <Share>Share</Share>
+            <Share onClick={this.props.shareModelShow} >Share</Share>
             <Save>Save</Save>
           </ShareSave>
         </HeaderContent>

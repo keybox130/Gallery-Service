@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Header from './Header.jsx';
 import Images from './Images.jsx';
 import GalleryModal from './GalleryModal.jsx';
+import ShareModal from './ShareModal.jsx';
 
 const axios = require('axios');
 
@@ -42,12 +43,13 @@ class App extends React.Component {
     this.getStay = this.getStay.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
     this.PrevOrNextImg = this.PrevOrNextImg.bind(this);
+    this.ShareModalShow = this.ShareModalShow.bind(this);
   }
 
   // Invokes getStay with hardcoded stay
   componentDidMount() {
-    this.getStay(100);
-  }
+    this.getStay(9);
+9 }
 
   // Gets selected stay
   getStay(roomId) {
@@ -92,11 +94,16 @@ class App extends React.Component {
     });
   }
 
+  ShareModalShow() {
+    console.log("Show Share Modal invoked");
+  }
+
   render() {
     // destructure state properties
     const { imageChosen, stay, galleryShown } = this.state;
     // If state.stay is true proceed with rendering Header component, else show loading.
-    const header = stay ? <Header stay={stay} /> : <h1>Loading...</h1>;
+    const header = stay ? <Header stay={stay} shareModelShow={this.ShareModalShow} />
+      : <h1>Loading...</h1>;
     // If state.stay is true proceed with rendering Images component, else show loading.
     const images = stay ? <Images toggleMod={this.toggleModal} photos={stay.photos} />
       : <h1>Loading Images...</h1>;
