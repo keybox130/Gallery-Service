@@ -96,9 +96,9 @@ class Header extends React.Component {
   }
 
   render() {
-    const {
-      title, rating, rating_count, super_host, location } = this.props.stay;
-    let Superhost = super_host ? <><SuperHostIcon></SuperHostIcon><SuperHost>Superhost</SuperHost></> : <div />;
+    const { title, rating, rating_count, super_host, location } = this.props.stay;
+    const Superhost = super_host ? <><SuperHostIcon></SuperHostIcon><SuperHost>Superhost</SuperHost></>
+      : <div />;
     return (
       <div>
         <StayName>{title}</StayName>

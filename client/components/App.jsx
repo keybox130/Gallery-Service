@@ -41,11 +41,12 @@ class App extends React.Component {
     };
     this.getStay = this.getStay.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
+    this.PrevOrNextImg = this.PrevOrNextImg.bind(this);
   }
 
   // Invokes getStay with hardcoded stay
   componentDidMount() {
-    this.getStay(99);
+    this.getStay(100);
   }
 
   // Gets selected stay
@@ -61,30 +62,59 @@ class App extends React.Component {
       });
   }
 
+  PrevOrNextImg(direction) {
+    if (direction === 'Back') {
+      // console.log("Back Triggered");
+      this.setState(
+        {
+          imageChosen: this.state.imageChosen - 1,
+        },
+      );
+      // console.log(`Back Triggered: State.imgChosen: ${this.state.imageChosen}`);
+    }
+
+    if (direction === 'Forward') {
+      this.setState(
+        {
+          imageChosen: this.state.imageChosen + 1,
+        },
+      );
+      // console.log(`Forward Triggered: State.imgChosen: ${this.state.imageChosen}`);
+    }
+  }
+
   toggleModal(e) {
     const { galleryShown } = this.state;
     const { id } = e.target;
     this.setState({
       galleryShown: !galleryShown,
-      imageChosen: id,
+      imageChosen: Number(id),
     });
   }
 
   render() {
     // destructure state properties
     const { imageChosen, stay, galleryShown } = this.state;
-    // If state.stay is true proceed with rendering header component, else show loading.
+    // If state.stay is true proceed with rendering Header component, else show loading.
     const header = stay ? <Header stay={stay} /> : <h1>Loading...</h1>;
-    // If state.stay is true proceed with rendering images component, else show loading.
+    // If state.stay is true proceed with rendering Images component, else show loading.
     const images = stay ? <Images toggleMod={this.toggleModal} photos={stay.photos} />
       : <h1>Loading Images...</h1>;
     // If state.show is true render GalleryModal, else: Empty Div.
     const gallerymodal = galleryShown
-      ? (<GalleryModal photos={stay.photos} imageSelected={imageChosen} toggleMod={this.toggleModal}/>)
+      ? (
+        <GalleryModal
+          photos={stay.photos}
+          imageSelected={imageChosen}
+          toggleMod={this.toggleModal}
+          prevOrNext={this.PrevOrNextImg}
+        />
+      )
       : <div />;
+
     return (
       <>
-      <GalleryModalDiv>{gallerymodal}</GalleryModalDiv>
+        <GalleryModalDiv>{gallerymodal}</GalleryModalDiv>
         <HeaderImg />
         <Master>
           <div>{header}</div>

@@ -46,10 +46,10 @@ const reviewCount = () => randomInt(1, 300, true);
 
 // This will output an Array photo OBJs 10 of them for now.
 const imageSeeder = () => {
-  // const url = 'www.aws.com/imageurl.jpg';
-  let result = [];
-  for (let count = 1; count < 10; count++) {
-    let obj = {
+  const result = [];
+  const randomImgCount = randomInt(6, 10, true);
+  for (let count = 1; count < randomImgCount; count++) {
+    const obj = {
       id: count,
       photo_url: imgUrls[randomInt(0, imgUrls.length, true)],
       description: imageDesc[randomInt(0, imageDesc.length, true)],
@@ -61,10 +61,10 @@ const imageSeeder = () => {
 
 // Seed the DB
 const dataToSeed = () => {
-  let results = [];
+  const results = [];
 
   for (let count = 1; count < 101; count++) {
-    let obj = {};
+    const obj = {};
     obj.room_id = count;
     obj.title = stayName[randomInt(0, stayName.length, true)];
     obj.rating = randomInt(3, 5, false);
@@ -75,11 +75,11 @@ const dataToSeed = () => {
     results.push(obj);
   }
   return results;
-};
+};1
 // console.log('Data to Seed: ', dataToSeed());
 
 const seedTheDB = () => {
-  let arr = dataToSeed();
+  const arr = dataToSeed();
   Stay.insertMany(arr, (err, docs) => {
     if (err) {
       console.log(`Error in seeding JS line 86 : ${err}`);
