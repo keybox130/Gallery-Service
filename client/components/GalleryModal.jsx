@@ -4,6 +4,23 @@ import styled from 'styled-components';
 const GalleryModalDiv = styled.div`
   background-color: white;
   width: 100%;
+  animation-duration: 1s;
+  animation-name: slidein;
+}
+
+@keyframes slidein {
+  from {
+    margin-top: 100%;
+    height: 300%;
+    opacity:25%;
+  }
+
+  to {
+    margin-top: 0%;
+    height: 100%;
+    opacity:100%;
+  }
+}
 `;
 
 const CenteredDiv = styled.div`
@@ -18,6 +35,7 @@ const CloseButton = styled.button`
   font-family: 'Montserrat', sans-serif;
   flex-direction: row;
   border-radius: 5px;
+  border: none;
 `;
 
 const PreviousButton = styled.button`
@@ -53,6 +71,7 @@ const GalleryImage = styled.img`
   display: flex;
   flex-direction: column;
   height:800px;
+  //max-width:600px;
 `;
 
 class GalleryModal extends React.Component {
@@ -94,7 +113,7 @@ class GalleryModal extends React.Component {
 
     return (
       <GalleryModalDiv>
-        <CloseButton onClick={toggleMod}>Close</CloseButton>
+        <CloseButton onClick={toggleMod}>X Close</CloseButton>
         <CenteredDiv>
           <div>{previousButton}</div>
           <ImgCol>
