@@ -23,11 +23,18 @@ const GalleryModalDiv = styled.div`
 }
 `;
 
-const CenteredDiv = styled.div`
+const GalleryDiv = styled.div`
   display:flex;
   flex-direction:row;
-  justify-content:center;
+  justify-content: space-between;
   align-items: center;
+  width:100%;
+`;
+const MainButtons = styled.div`
+  display:flex;
+  flex-direction:row;
+  align-items:center;
+  justify-content: space-between;
 `;
 const CloseButton = styled.button`
   width: 100px;
@@ -37,45 +44,85 @@ const CloseButton = styled.button`
   border-radius: 5px;
   border: none;
 `;
+const ShareSaveDiv = styled.div`
+display: flex;
+flex-direction: row;
+margin-right:50px;
+
+`;
+
+const ShareButton = styled.button`
+  flex-direction: row;
+  width: 25px;
+  height: 25px;
+  border-radius: 30px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  background-color: #fff;
+  outline:none;
+  padding: 0;
+  border: none;
+  background: none;
+  &:hover {
+    background-color: #F0EFEF;
+  }
+`;
+const SaveButton = styled(ShareButton)`
+  flex-direction: row;
+  width: 25px;
+  height: 25px;
+  border-radius: 30px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  background-color: #fff;
+  outline:none;
+  &:hover {
+    background-color: #F0EFEF;
+  }
+`;
 
 const PreviousButton = styled.button`
-  width: 100px;
-  height:35px;
+  width: 50px;
+  height: 50px;
+  border-radius: 30px;
   font-family: 'Montserrat', sans-serif;
-  border: none;
+  font-size: 15px;
+  background-color: #fff;
+  border-style: solid;
+  border-width: 1px;
+  outline:none;
+  &:hover {
+    background-color: #F0EFEF;
+  }
+
+`;
+
+const NextButton = styled(PreviousButton)`
   margin-right:25px;
 `;
 
-const NextButton = styled.button`
-  width: 100px;
-  height:35px;
-  font-family: 'Montserrat', sans-serif;
-  border: none;
-  margin-left: 25px;
-`;
-  // const imgRow = styled.div`
-  // display: flex;
-  // width:700px
-  // flex-direction: row;
-  // `;
 const ImgCol = styled.div`
+  //width: 25%;
   display:flex;
   flex-direction:column;
-  // width: 25%;
-  // align-items: center;
-  // justify-content: center;
-  // align-items: center;
+
+   align-items: center;
 `;
 const ImgNums = styled.div`
   display: flex;
   flex-direction: column;
+  margin-bottom:10px;
+  font-family: 'Montserrat', sans-serif;
 `;
 
 const GalleryImage = styled.img`
   display: flex;
   flex-direction: column;
   height:800px;
-  //max-width:600px;
+`;
+const ImgDescDiv = styled.div`
+font-family: 'Montserrat', sans-serif;
+
 `;
 
 class GalleryModal extends React.Component {
@@ -91,13 +138,17 @@ class GalleryModal extends React.Component {
   }
 
   render() {
-    const { photos, toggleMod, imageSelected} = this.props;
+    const { photos, toggleMod, saveModalToggle, shareModalToggle, imageSelected} = this.props;
 
     // Get the ID num of the last image
-    const lastImageID = photos[photos.length-1].id;
+    // console.log('gallery Modal, Photo ID. line 144', photos[this.props.photos.length - 1].id);
+    const lastImageID = photos[this.props.photos.length - 1].id;
 
     // Get chosen Img from app state
     const chosenImg = photos[imageSelected].photo_url;
+
+    // Get Description of chosen photo
+    const ImgDesc = photos[imageSelected].description;
 
     // If the selected image is the first, do not show previous button
     const previousButton = imageSelected === 0 ? <div />
@@ -116,20 +167,27 @@ class GalleryModal extends React.Component {
       );
 
     return (
-      <GalleryModalDiv>
-        <CloseButton onClick={toggleMod}>X Close</CloseButton>
-        <CenteredDiv>
-          <div>{previousButton}</div>
-          <ImgCol>
-            <ImgNums>
+      <GalleryModalDiv id="GalleryModalDiv">
+        <MainButtons id="MainButtons">
+          <CloseButton id="CloseButton" onClick={toggleMod}>X Close</CloseButton>
+          <ShareSaveDiv id="ShareSaveDiv">
+            <ShareButton onClick={shareModalToggle}>^</ShareButton>
+            <SaveButton onClick={saveModalToggle}>Y</SaveButton>
+          </ShareSaveDiv>
+        </MainButtons>
+        <GalleryDiv id="GalleryDiv">
+          <div id="PreviousButton">{previousButton}</div>
+          <ImgCol id="ImgCol">
+            <ImgNums id="ImgNums">
               {imageSelected + 1}
               /
               {lastImageID}
             </ImgNums>
-            <GalleryImage src={`${chosenImg}`} alt="Stay here!" />
+            <GalleryImage id="GalleryImg" src={`${chosenImg}`} alt="Stay here!" />
+            <ImgDescDiv id="ImgDesc"><p>{ImgDesc}</p></ImgDescDiv>
           </ImgCol>
-          <div>{nextButton}</div>
-        </CenteredDiv>
+          <div id="NextButton">{nextButton}</div>
+        </GalleryDiv>
       </GalleryModalDiv>
     );
   }
