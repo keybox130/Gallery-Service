@@ -83,11 +83,13 @@ font-family: 'Montserrat', sans-serif;
 margin-right: 10px;
 font-size 14px;
 text-decoration: underline;
+cursor: pointer;
 `;
 const Save = styled.p`
 text-decoration: underline;
 font-size 14px;
 font-family: 'Montserrat', sans-serif;
+cursor: pointer;
 `;
 class Header extends React.Component {
   constructor(props) {
@@ -111,8 +113,8 @@ class Header extends React.Component {
             <Location>{location}</Location>
           </RatingLocation>
           <ShareSave>
-            <Share onClick={this.props.shareModelShow} >Share</Share>
-            <Save>Save</Save>
+            <Share>Share</Share>
+            <Save onClick={this.props.saveModalToggle} >Save</Save>
           </ShareSave>
         </HeaderContent>
       </div>

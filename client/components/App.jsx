@@ -108,14 +108,13 @@ class App extends React.Component {
   SaveModalToggle() {
     console.log('saveModalToggle invoked');
     const { saveModalShown } = this.state;
-
     console.log(this.state);
 
-    // this.setState({
-    //   saveModalShown: !saveModalShown,
-    // });
+    this.setState({
+      saveModalShown: !saveModalShown,
+    });
 
-    this.setState(prevState => ({ saveModalShown: !saveModalShown }));
+    // this.setState(prevState => ({ saveModalShown: !saveModalShown }));
 
     console.log(this.state);
   }
@@ -149,7 +148,7 @@ class App extends React.Component {
       : <div />;
     const savemodal = saveModalShown
       ? (
-        <SaveModal />
+        <SaveModal saveModalToggle={this.SaveModalToggle} />
       )
       : <div />;
 

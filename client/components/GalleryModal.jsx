@@ -35,6 +35,10 @@ const MainButtons = styled.div`
   flex-direction:row;
   align-items:center;
   justify-content: space-between;
+  padding-top:40px;
+  padding-right:40px;
+  padding-left:40px;
+  padding-bottom:40px;
 `;
 const CloseButton = styled.button`
   width: 100px;
@@ -47,8 +51,6 @@ const CloseButton = styled.button`
 const ShareSaveDiv = styled.div`
 display: flex;
 flex-direction: row;
-margin-right:50px;
-
 `;
 
 const ShareButton = styled.button`

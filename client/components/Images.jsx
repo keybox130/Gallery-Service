@@ -18,6 +18,7 @@ width: 560px;
 height:560px;
 object-fit: cover;
 margin-right: 0px;
+cursor: pointer;
 `;
 const HomeImg2 = styled.img`
 width: 272px;
@@ -26,6 +27,7 @@ object-fit: cover;
 margin-left: 10px;
 margin-top:0px
 margin-bottom: 5px;
+cursor: pointer;
 `;
 const HomeImg3 = styled.img`
 width: 272px;
@@ -33,6 +35,7 @@ height:275px;
 object-fit: cover;
 margin-top:10px;
 margin-left: 10px;
+cursor: pointer;
 `;
 
 const LeftCol = styled.div`
