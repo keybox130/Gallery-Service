@@ -44,7 +44,7 @@ border-radius: 30px;
 const SaveModalHeader = styled.div`
   z-index: 6;
   display: flex;
-  justify-content: flex-start;   /* adjustment */
+  justify-content: flex-start;
   position: relative;
   min-height: 30px !important;
   padding: 20px 24px !important;
@@ -52,8 +52,7 @@ const SaveModalHeader = styled.div`
 `;
 const SaveModalHeaderText = styled.div`
   flex: 0 1 auto;
-  width: 150px;
-  height: 100px;
+  width: 130px;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
