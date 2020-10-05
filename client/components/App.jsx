@@ -154,7 +154,7 @@ class App extends React.Component {
       // Conditionally Render Save Modal
     const savemodal = saveModalShown
       ? (
-        <SaveModal saveModalToggle={this.SaveModalToggle} />
+        <SaveModal saveModalToggle={this.SaveModalToggle} photos={stay.photos} />
       )
       : <div />;
 
