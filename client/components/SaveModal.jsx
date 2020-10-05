@@ -181,6 +181,26 @@ width: 100% !important;
 `;
 function SaveModal(props) {
   const { saveModalToggle, photos, lists } = props;
+  const mappedLists = lists.map ( (listItem, i) => (
+    <ListItem key={i}>
+      <ListItemInner>
+        <LiImg>
+          <img src={`${listItem.tmb_url}`} alt="" width="65" height="65" />
+        </LiImg>
+        <LiInfo>
+          <LiTime>
+            Any time
+          </LiTime>
+          <LiName>
+            {listItem.title}
+          </LiName>
+          <LiLength>
+            {listItem.number} Stays
+          </LiLength>
+        </LiInfo>
+      </ListItemInner>
+    </ListItem>
+  ))
   return (
     <SaveModalContainer id="SaveModalContainer">
       <SaveModalDiv id="SaveModalDiv">
@@ -193,42 +213,7 @@ function SaveModal(props) {
           </SaveModalHeaderText>
         </SaveModalHeader>
         <ListItems>
-          <ListItem>
-            <ListItemInner>
-              <LiImg>
-                <img src={`${photos[0].photo_url}`} alt="" width="65" height="65" />
-                </LiImg>
-              <LiInfo>
-                <LiTime>
-                  Any time
-                </LiTime>
-                <LiName>
-                  Hack Reactor Graduation Vacation
-                </LiName>
-                <LiLength>
-                  2 Stays
-                </LiLength>
-              </LiInfo>
-            </ListItemInner>
-          </ListItem>
-          <ListItem>
-            <ListItemInner>
-              <LiImg>
-                <img src={`${photos[1].photo_url}`} alt="" width="65" height="65" />
-                </LiImg>
-              <LiInfo>
-                <LiTime>
-                  Any time
-                </LiTime>
-                <LiName>
-                  The vacation after the Graduation Vacation
-                </LiName>
-                <LiLength>
-                  3 Stays
-                </LiLength>
-              </LiInfo>
-            </ListItemInner>
-          </ListItem>
+          <div>{mappedLists}</div>
         </ListItems>
         <SaveModalFooter>
           <SaveModalFooterButton>
