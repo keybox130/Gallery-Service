@@ -20,9 +20,10 @@ const HeaderImg = styled.div`
   background-image: url("header.png");
   background-repeat: no-repeat;
   background-size: auto 100px;
+  background-position: center;
 `;
 
-const Master = styled.div`
+const HomeMainDiv = styled.div`
   z-index: 1;
   display: flex;
   flex-direction: column;
@@ -38,6 +39,15 @@ const GalleryModalDiv = styled.div`
   align-items: center;
   justify-content: center;
   position: absolute;
+`;
+const SaveModalDiv = styled.div`
+ z-index: 3;
+// display: flex;
+// flex-direction: column;
+// width: 100%;
+// align-items: center;
+// justify-content: center;
+position: absolute;
 `;
 
 class App extends React.Component {
@@ -77,13 +87,13 @@ class App extends React.Component {
 
   PrevOrNextImg(direction) {
     if (direction === 'Back') {
-      // console.log("Back Triggered");
+      // console.log("PrevOrNextImg Invoked");
       this.setState(
         {
           imageChosen: this.state.imageChosen - 1,
         },
       );
-      // console.log(`Back Triggered: State.imgChosen: ${this.state.imageChosen}`);
+      // console.log(`PrevOrNextImg Invoked: State.imgChosen: ${this.state.imageChosen}`);
     }
 
     if (direction === 'Forward') {
@@ -106,17 +116,11 @@ class App extends React.Component {
   }
 
   SaveModalToggle() {
-    console.log('saveModalToggle invoked');
     const { saveModalShown } = this.state;
-    console.log(this.state);
-
     this.setState({
       saveModalShown: !saveModalShown,
     });
-
     // this.setState(prevState => ({ saveModalShown: !saveModalShown }));
-
-    console.log(this.state);
   }
 
   ShareModalToggle() {
@@ -133,7 +137,8 @@ class App extends React.Component {
     // If state.stay is true proceed with rendering Images component, else show loading.
     const images = stay ? <Images toggleMod={this.toggleModal} photos={stay.photos} />
       : <h1>Loading Images...</h1>;
-    // If state.show is true render GalleryModal, else: Empty Div.
+
+    // Conditionally Render Gallery Modal
     const gallerymodal = (galleryShown && stay.photos)
       ? (
         <GalleryModal
@@ -146,6 +151,7 @@ class App extends React.Component {
         />
       )
       : <div />;
+      // Conditionally Render Save Modal
     const savemodal = saveModalShown
       ? (
         <SaveModal saveModalToggle={this.SaveModalToggle} />
@@ -154,13 +160,13 @@ class App extends React.Component {
 
     return (
       <>
-        <>{savemodal}</>
-        <GalleryModalDiv>{gallerymodal}</GalleryModalDiv>
-        <HeaderImg />
-        <Master>
-          <div>{header}</div>
-          <div>{images}</div>
-        </Master>
+        <SaveModalDiv id="SaveModalDiv">{savemodal}</SaveModalDiv>
+        <GalleryModalDiv id="GalleryModalDiv">{gallerymodal}</GalleryModalDiv>
+        <HeaderImg id="HeaderImg" />
+        <HomeMainDiv id="HomeMain DIV">
+          <div id="Header">{header}</div>
+          <div id="Image Gallery">{images}</div>
+        </HomeMainDiv>
       </>
     );
   }

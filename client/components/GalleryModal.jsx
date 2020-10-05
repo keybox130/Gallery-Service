@@ -47,6 +47,7 @@ const CloseButton = styled.button`
   flex-direction: row;
   border-radius: 5px;
   border: none;
+  padding:none;
 `;
 const ShareSaveDiv = styled.div`
 display: flex;
@@ -86,6 +87,7 @@ const SaveButton = styled(ShareButton)`
 const PreviousButton = styled.button`
   width: 50px;
   height: 50px;
+  margin-left:25px;
   border-radius: 30px;
   font-family: 'Montserrat', sans-serif;
   font-size: 15px;
@@ -107,13 +109,11 @@ const ImgCol = styled.div`
   //width: 25%;
   display:flex;
   flex-direction:column;
-
    align-items: center;
 `;
 const ImgNums = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-bottom:10px;
+display: flex;
+flex-direction: column;
   font-family: 'Montserrat', sans-serif;
 `;
 
@@ -170,26 +170,29 @@ class GalleryModal extends React.Component {
 
     return (
       <GalleryModalDiv id="GalleryModalDiv">
+
         <MainButtons id="MainButtons">
           <CloseButton id="CloseButton" onClick={toggleMod}>X Close</CloseButton>
+          <ImgNums id="ImgNums">
+            {imageSelected + 1}
+            /
+            {lastImageID}
+          </ImgNums>
           <ShareSaveDiv id="ShareSaveDiv">
             <ShareButton onClick={shareModalToggle}>^</ShareButton>
             <SaveButton onClick={saveModalToggle}>Y</SaveButton>
           </ShareSaveDiv>
         </MainButtons>
+
         <GalleryDiv id="GalleryDiv">
           <div id="PreviousButton">{previousButton}</div>
           <ImgCol id="ImgCol">
-            <ImgNums id="ImgNums">
-              {imageSelected + 1}
-              /
-              {lastImageID}
-            </ImgNums>
             <GalleryImage id="GalleryImg" src={`${chosenImg}`} alt="Stay here!" />
             <ImgDescDiv id="ImgDesc"><p>{ImgDesc}</p></ImgDescDiv>
           </ImgCol>
           <div id="NextButton">{nextButton}</div>
         </GalleryDiv>
+
       </GalleryModalDiv>
     );
   }
