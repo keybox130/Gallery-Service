@@ -59,8 +59,10 @@ class App extends React.Component {
       imageChosen: null,
       saveModalShown: false,
       shareModalShown: false,
+      lists: null,
     };
     this.getStay = this.getStay.bind(this);
+    this.getLists = this.getLists.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
     this.PrevOrNextImg = this.PrevOrNextImg.bind(this);
     this.SaveModalToggle = this.SaveModalToggle.bind(this);
@@ -70,6 +72,7 @@ class App extends React.Component {
   // Invokes getStay with hardcoded stay
   componentDidMount() {
     this.getStay(70);
+    this.getLists();
   }
 
   // Gets selected stay
@@ -78,6 +81,19 @@ class App extends React.Component {
       .then((response) => {
         this.setState({
           stay: response.data[0],
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  // Get All Lists in list DB
+  getLists() {
+    axios('/list')
+      .then((response) => {
+        this.setState({
+          lists: response.data,
         });
       })
       .catch((error) => {
@@ -129,7 +145,7 @@ class App extends React.Component {
 
   render() {
     // destructure state properties
-    const { imageChosen, stay, galleryShown, saveModalShown } = this.state;
+    const { imageChosen, stay, lists, galleryShown, saveModalShown } = this.state;
 
     // If state.stay is true proceed with rendering Header component, else show loading.
     const header = stay ? <Header stay={stay} saveModalToggle={this.SaveModalToggle} />
@@ -152,9 +168,9 @@ class App extends React.Component {
       )
       : <div />;
       // Conditionally Render Save Modal
-    const savemodal = saveModalShown
+    const savemodal = (saveModalShown && lists)
       ? (
-        <SaveModal saveModalToggle={this.SaveModalToggle} photos={stay.photos} />
+        <SaveModal saveModalToggle={this.SaveModalToggle} photos={stay.photos} lists={lists} />
       )
       : <div />;
 

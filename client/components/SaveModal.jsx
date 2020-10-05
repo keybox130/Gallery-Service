@@ -180,7 +180,7 @@ text-decoration: underline !important;
 width: 100% !important;
 `;
 function SaveModal(props) {
-  const { saveModalToggle, photos } = props;
+  const { saveModalToggle, photos, lists } = props;
   return (
     <SaveModalContainer id="SaveModalContainer">
       <SaveModalDiv id="SaveModalDiv">
