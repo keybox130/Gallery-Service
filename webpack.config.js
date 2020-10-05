@@ -20,4 +20,16 @@ module.exports = {
       },
     ],
   },
+  // May not need this
+  // presets: [
+  //   [
+  //     '@babel/preset-env',
+  //     {
+  //       targets: {
+  //         node: 'current',
+  //       },
+  //     },
+  //   ],
+  //   '@babel/preset-react',
+  // ],
 };

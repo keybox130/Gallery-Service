@@ -18,6 +18,7 @@ width: 560px;
 height:560px;
 object-fit: cover;
 margin-right: 0px;
+cursor: pointer;
 `;
 const HomeImg2 = styled.img`
 width: 272px;
@@ -26,6 +27,7 @@ object-fit: cover;
 margin-left: 10px;
 margin-top:0px
 margin-bottom: 5px;
+cursor: pointer;
 `;
 const HomeImg3 = styled.img`
 width: 272px;
@@ -33,6 +35,7 @@ height:275px;
 object-fit: cover;
 margin-top:10px;
 margin-left: 10px;
+cursor: pointer;
 `;
 
 const LeftCol = styled.div`
@@ -55,14 +58,14 @@ class Images extends React.Component {
     return (
       <>
         <HomeImages>
-          <HomeImg1 id="main" src={`${this.props.photos[0].photo_url}`} alt="Stay here" />
+          <HomeImg1 id="0"onClick={this.props.toggleMod} src={`${this.props.photos[0].photo_url}`} alt="Stay here" />
           <LeftCol>
-            <HomeImg2 id="topLeft" src={`${this.props.photos[1].photo_url}`} alt="Stay here" />
-            <HomeImg3 id="bttmLeft" src={`${this.props.photos[2].photo_url}`} alt="Stay here" />
+            <HomeImg2 id="1" onClick={this.props.toggleMod} src={`${this.props.photos[1].photo_url}`} alt="Stay here" />
+            <HomeImg3 id="2" onClick={this.props.toggleMod} src={`${this.props.photos[2].photo_url}`} alt="Stay here" />
           </LeftCol>
           <RightCol>
-            <HomeImg2 id="topRight" src={`${this.props.photos[3].photo_url}`} alt="Stay here" />
-            <HomeImg3 id="bttmRight" src={`${this.props.photos[4].photo_url}`} alt="Stay here" />
+            <HomeImg2 onClick={this.props.toggleMod} id="3" src={`${this.props.photos[3].photo_url}`} alt="Stay here" />
+            <HomeImg3 id="4" onClick={this.props.toggleMod} src={`${this.props.photos[4].photo_url}`} alt="Stay here" />
           </RightCol>
         </HomeImages>
       </>

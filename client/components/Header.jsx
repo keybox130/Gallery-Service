@@ -83,11 +83,13 @@ font-family: 'Montserrat', sans-serif;
 margin-right: 10px;
 font-size 14px;
 text-decoration: underline;
+cursor: pointer;
 `;
 const Save = styled.p`
 text-decoration: underline;
 font-size 14px;
 font-family: 'Montserrat', sans-serif;
+cursor: pointer;
 `;
 class Header extends React.Component {
   constructor(props) {
@@ -96,9 +98,9 @@ class Header extends React.Component {
   }
 
   render() {
-    const {
-      title, rating, rating_count, super_host, location } = this.props.stay;
-    let Superhost = super_host ? <><SuperHostIcon></SuperHostIcon><SuperHost>Superhost</SuperHost></> : <div />;
+    const { title, rating, rating_count, super_host, location } = this.props.stay;
+    const Superhost = super_host ? <><SuperHostIcon></SuperHostIcon><SuperHost>Superhost</SuperHost></>
+      : <div />;
     return (
       <div>
         <StayName>{title}</StayName>
@@ -112,7 +114,7 @@ class Header extends React.Component {
           </RatingLocation>
           <ShareSave>
             <Share>Share</Share>
-            <Save>Save</Save>
+            <Save onClick={this.props.saveModalToggle} >Save</Save>
           </ShareSave>
         </HeaderContent>
       </div>
