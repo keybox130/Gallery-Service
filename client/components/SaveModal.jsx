@@ -200,7 +200,7 @@ function SaveModal(props) {
         </LiInfo>
       </ListItemInner>
     </ListItem>
-  ))
+  ));
   return (
     <SaveModalContainer id="SaveModalContainer">
       <SaveModalDiv id="SaveModalDiv">
