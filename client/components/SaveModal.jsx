@@ -42,30 +42,30 @@ border-radius: 30px;
 `;
 
 const SaveModalHeader = styled.div`
-z-index: 6;
-display: flex;
-flex-direction: row;
-//justify-content: space-between !important;
-align-items:center;
-min-height: 64px !important;
-padding: 0px 24px !important;
-border-bottom: 1px solid rgb(235, 235, 235) !important;
+  z-index: 6;
+  display: flex;
+  justify-content: flex-start;   /* adjustment */
+  position: relative;
+  min-height: 30px !important;
+  padding: 20px 24px !important;
+  border-bottom: 1px solid rgb(235, 235, 235) !important;
 `;
 const SaveModalHeaderText = styled.div`
-z-index: 6;
-display: flex;
-flex-direction: row;
-width: auto;
-//height: 50px;
-//justify-content: space-between;
-align-items:center;
+  flex: 0 1 auto;
+  width: 150px;
+  height: 100px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 `;
 const CloseButton = styled.button`
-  z-index: 5;
+
   width: 30px;
   height:30px;
+  flex: 0 1 auto;
+  margin-right: auto;
   font-family: 'Montserrat', sans-serif;
-  flex-direction: row;
+
   border-radius:20px;
   border: none;
   cursor: pointer;
@@ -80,8 +80,6 @@ const SaveListHeaderText = styled.div`
   overflow: hidden !important;
   flex: 0 1 auto !important;
   text-align: center !important;
-  margin-left: 16px !important;
-  margin-right: 16px !important;
 `;
 
 function SaveModal(props) {
@@ -90,9 +88,11 @@ function SaveModal(props) {
     <SaveModalContainer id="SaveModalContainer">
       <SaveModalDiv id="SaveModalDiv">
         <SaveModalHeader id="SaveModalHeader">
-        <CloseButton id="CloseButton" onClick={saveModalToggle}>X</CloseButton>
+          <CloseButton id="CloseButton" onClick={saveModalToggle}>X</CloseButton>
           <SaveModalHeaderText id="SaveModalHeaderText">
-            <SaveListHeaderText id="SaveToListText">Save To List</SaveListHeaderText>
+            <SaveListHeaderText id="SaveToListText">
+              Save To List
+            </SaveListHeaderText>
           </SaveModalHeaderText>
         </SaveModalHeader>
       </SaveModalDiv>
