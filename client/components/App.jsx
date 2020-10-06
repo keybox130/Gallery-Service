@@ -64,6 +64,7 @@ class App extends React.Component {
     this.getStay = this.getStay.bind(this);
     this.getLists = this.getLists.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
+    this.showAllPhotos = this.showAllPhotos.bind(this);
     this.PrevOrNextImg = this.PrevOrNextImg.bind(this);
     this.SaveModalToggle = this.SaveModalToggle.bind(this);
     this.ShareModalToggle = this.ShareModalToggle.bind(this);
@@ -131,6 +132,14 @@ class App extends React.Component {
     });
   }
 
+  showAllPhotos() {
+    const { galleryShown } = this.state;
+    this.setState({
+      galleryShown: !galleryShown,
+      imageChosen: 0,
+    });
+  }
+
   SaveModalToggle() {
     const { saveModalShown } = this.state;
     this.setState({
@@ -151,7 +160,7 @@ class App extends React.Component {
     const header = stay ? <Header stay={stay} saveModalToggle={this.SaveModalToggle} />
       : <h1>Loading...</h1>;
     // If state.stay is true proceed with rendering Images component, else show loading.
-    const images = stay ? <Images toggleMod={this.toggleModal} photos={stay.photos} />
+    const images = stay ? <Images toggleMod={this.toggleModal} photos={stay.photos} showAllPhotos={this.showAllPhotos} />
       : <h1>Loading Images...</h1>;
 
     // Conditionally Render Gallery Modal
@@ -163,6 +172,7 @@ class App extends React.Component {
           toggleMod={this.toggleModal}
           saveModalToggle={this.SaveModalToggle}
           shareModalToggle={this.ShareModalToggle}
+          showAllPhotos={this.showAllPhotos}
           prevOrNext={this.PrevOrNextImg}
         />
       )

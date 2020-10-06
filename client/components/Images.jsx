@@ -47,6 +47,10 @@ const RightCol = styled.div`
   display: flex;
   flex-direction: column;
 `;
+const ShowAllPhotosButton = styled.div`
+
+
+`;
 
 class Images extends React.Component {
   constructor(props) {
@@ -55,7 +59,7 @@ class Images extends React.Component {
   }
 
   render() {
-    const { toggleMod, photos } = this.props;
+    const { toggleMod, photos, showAllPhotos} = this.props;
     return (
       <>
         <HomeImages>
@@ -69,6 +73,7 @@ class Images extends React.Component {
             <HomeImg3 id="4" onClick={toggleMod} src={`${photos[4].photo_url}`} alt="Stay here" />
           </RightCol>
         </HomeImages>
+        <ShowAllPhotosButton onClick={showAllPhotos}>Show all photos</ShowAllPhotosButton>
       </>
     );
   }

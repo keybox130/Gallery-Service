@@ -7,7 +7,7 @@ const db = mongoose.connection;
 // Test connection
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => {
-  console.log('Mongoose has connected to Mongo DB');
+  console.log('Connected to the DataBase');
 });
 
 // Define Schema
