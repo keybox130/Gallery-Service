@@ -144,43 +144,9 @@ const LiLength = styled.div`
   color: rgb(34, 34, 34) !important;
   font-family: 'Montserrat', sans-serif;
 `;
-const SaveModalFooter = styled.div`
-  -webkit-box-pack: justify !important;
-  -webkit-box-align: center !important;
-  display: flex !important;
-  flex: 0 0 auto !important;
-  border-top: 1px solid rgb(235, 235, 235) !important;
-  padding: 16px 24px !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-  font-size: 16px !important;
-  line-height: 20px !important;
-  font-family: 'Montserrat', sans-serif;
-`;
-const SaveModalFooterButton = styled.button`
-cursor: pointer !important;
-display: inline-block !important;
-margin: 0px !important;
-position: relative !important;
-text-align: center !important;
-touch-action: manipulation !important;
-font-size: 16px !important;
-line-height: 20px !important;
-font-family: 'Montserrat', sans-serif;
-font-weight: 600 !important;
-border-radius: 8px !important;
-outline: none !important;
-padding: 10px !important;
-transition: box-shadow 0.2s ease 0s, -ms-transform 0.1s ease 0s, -webkit-transform 0.1s ease 0s, transform 0.1s ease 0s !important;
-border: none !important;
-background: transparent !important;
-color: rgb(34, 34, 34) !important;
-text-decoration: underline !important;
-width: 100% !important;
-`;
 
-function SaveModal(props) {
-  const { listClicked, saveModalToggle, photos, lists, IncrementStayCount} = props;
+function ShareModal(props) {
+  const { shareModalToggle, photos, lists } = props;
   const mappedLists = lists.map ((listItem, i) => (
     <ListItem
       key={listItem._id}
@@ -228,4 +194,4 @@ function SaveModal(props) {
     </SaveModalContainer>
   );
 }
-export default SaveModal;
+export default ShareModal;

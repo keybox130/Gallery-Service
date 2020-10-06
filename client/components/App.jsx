@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 import React from 'react';
 import styled from 'styled-components';
 import Header from './Header.jsx';
@@ -71,6 +72,8 @@ class App extends React.Component {
     this.ShareModalToggle = this.ShareModalToggle.bind(this);
     this.heartClick = this.heartClick.bind(this);
     this.IncrementStayCount = this.IncrementStayCount.bind(this);
+    this.listClicked = this.listClicked.bind(this);
+    this.heartClickUnsave = this.heartClickUnsave.bind(this);
   }
 
   // Invokes getStay with hardcoded stay
@@ -154,21 +157,27 @@ class App extends React.Component {
   heartClick() {
     const { saved } = this.state;
     console.log('heartClick invoked');
-    this.setState({
-      saved: !saved,
-    });
+    this.SaveModalToggle();
     // this.setState(prevState => ({ saveModalShown: !saveModalShown }));
   }
 
+  listClicked() {
+    this.setState({
+      saved: !this.state.saved,
+    });
+    this.SaveModalToggle();
+  }
+  // eslint-disable-next-line class-methods-use-this
   ShareModalToggle() {
     console.log('Share Modal invoked');
   }
 
   // Incrment The count of stay
+  // eslint-disable-next-line class-methods-use-this
   IncrementStayCount(currentCount) {
-    console.log("Invoked increment Stay count", currentCount );
+    console.log('Invoked increment Stay count', currentCount );
     const increasedCount = currentCount + 1;
-    console.log(increasedCount);
+    // console.log(increasedCount);
     // axios.post('/list', {
     //   firstName: 'Fred',
     //   lastName: 'Flintstone',
@@ -179,6 +188,12 @@ class App extends React.Component {
     //   .catch((error) => {
     //     console.log(error);
     //   });
+  }
+
+  heartClickUnsave() {
+    this.setState({
+      saved: !this.state.saved,
+    });
   }
 
   render() {
@@ -194,6 +209,7 @@ class App extends React.Component {
         saveModalToggle={this.SaveModalToggle}
         saved={saved}
         heartClick={this.heartClick}
+        heartClickUnsave={this.heartClickUnsave}
       />
     )
       : <h1>Loading...</h1>;
@@ -229,6 +245,7 @@ class App extends React.Component {
           photos={stay.photos}
           lists={lists}
           IncrementStayCount={this.IncrementStayCount}
+          listClicked={this.listClicked}
         />
       )
       : <div />;
