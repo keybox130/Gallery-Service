@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const HeaderContent = styled.div`
   width: 1120px;
-  height:55px;
+  height: 40px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -90,6 +90,9 @@ text-decoration: underline;
 font-size 14px;
 font-family: 'Montserrat', sans-serif;
 cursor: pointer;
+&:hover {
+  font-color: #F0EFEF;
+}
 `;
 class Header extends React.Component {
   constructor(props) {
