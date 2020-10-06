@@ -70,7 +70,7 @@ class App extends React.Component {
     this.SaveModalToggle = this.SaveModalToggle.bind(this);
     this.ShareModalToggle = this.ShareModalToggle.bind(this);
     this.heartClick = this.heartClick.bind(this);
-    this.incrementStayCount = this.incrementStayCount.bind(this);
+    this.IncrementStayCount = this.IncrementStayCount.bind(this);
   }
 
   // Invokes getStay with hardcoded stay
@@ -153,7 +153,7 @@ class App extends React.Component {
 
   heartClick() {
     const { saved } = this.state;
-    console.log("heartClick invoked");
+    console.log('heartClick invoked');
     this.setState({
       saved: !saved,
     });
@@ -161,26 +161,31 @@ class App extends React.Component {
   }
 
   ShareModalToggle() {
-    console.log("Share Modal invoked");
+    console.log('Share Modal invoked');
   }
 
   // Incrment The count of stay
-  incrementStayCount() {
-    axios.post('/list', {
-      firstName: 'Fred',
-      lastName: 'Flintstone'
-    })
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+  IncrementStayCount(currentCount) {
+    console.log("Invoked increment Stay count", currentCount );
+    const increasedCount = currentCount + 1;
+    console.log(increasedCount);
+    // axios.post('/list', {
+    //   firstName: 'Fred',
+    //   lastName: 'Flintstone',
+    // })
+    //   .then((response) => {
+    //     console.log(response);
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
   }
 
   render() {
     // destructure state properties
-    const { imageChosen, stay, lists, galleryShown, saveModalShown, saved } = this.state;
+    const {
+      imageChosen, stay, lists, galleryShown, saveModalShown, saved,
+    } = this.state;
 
     // If state.stay is true proceed with rendering Header component, else show loading.
     const header = stay ? (
@@ -223,7 +228,7 @@ class App extends React.Component {
           saveModalToggle={this.SaveModalToggle}
           photos={stay.photos}
           lists={lists}
-          incrementStayCount={this.incrementStayCount}
+          IncrementStayCount={this.IncrementStayCount}
         />
       )
       : <div />;

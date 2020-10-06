@@ -180,9 +180,12 @@ width: 100% !important;
 `;
 
 function SaveModal(props) {
-  const { saveModalToggle, photos, lists } = props;
+  const { saveModalToggle, photos, lists, IncrementStayCount} = props;
   const mappedLists = lists.map ((listItem, i) => (
-    <ListItem key={listItem._id}>
+    <ListItem
+      key={listItem._id}
+      onClick={() => (IncrementStayCount(listItem.number))}
+    >
       <ListItemInner>
         <LiImg>
           <img src={`${listItem.tmb_url}`} alt="" width="65" height="65" />
