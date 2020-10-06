@@ -1,44 +1,31 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const SaveModalBG = styled.div`
+const CreateListModalDiv = styled.div`
   height: 100vh;
   width: 100vw;
   background-color: #000;
   opacity: 50%;
   position: absolute;
 `;
-const SaveModalContainer = styled.div`
+const CreateListContainer = styled.div`
   height: 100vh;
   width: 100vw;
   display: flex;
   align-items: center;
   justify-content: center;
-  animation-duration: 1s;
-  animation-name: slidein;
-  }
-  @keyframes slidein {
-  from {
-    margin-top: 100%;
-    height: 300vh;
-    opacity:25%;
-  }
-  to {
-    margin-top: 0%;
-    height: 100vh;
-  }
-  }
+
 `;
 
-const SaveModalDiv = styled.div`
-  z-index: 6;
+const CreateListDiv = styled.div`
+  z-index: 7;
   width: 570px;
   background-color: #fff;
   border-radius: 30px;
 `;
 
-const SaveModalHeader = styled.div`
-  z-index: 6;
+const CreateListHeader = styled.div`
+  z-index: 7;
   display: flex;
   justify-content: flex-start;
   position: relative;
@@ -46,7 +33,7 @@ const SaveModalHeader = styled.div`
   padding: 20px 24px !important;
   border-bottom: 1px solid rgb(235, 235, 235) !important;
 `;
-const SaveModalHeaderText = styled.div`
+const CreateListModalHeaderText = styled.div`
   flex: 0 1 auto;
   width: 130px;
   position: absolute;
@@ -68,7 +55,7 @@ const CloseButton = styled.button`
   }
   outline:none;
 `;
-const SaveListHeaderText = styled.div`
+const CreateListHeaderText = styled.div`
   font-family: 'Montserrat', sans-serif;
   overflow: hidden !important;
   flex: 0 1 auto !important;
@@ -144,7 +131,7 @@ const LiLength = styled.div`
   color: rgb(34, 34, 34) !important;
   font-family: 'Montserrat', sans-serif;
 `;
-const SaveModalFooter = styled.div`
+const CreateListFooter = styled.div`
   -webkit-box-pack: justify !important;
   -webkit-box-align: center !important;
   display: flex !important;
@@ -157,7 +144,7 @@ const SaveModalFooter = styled.div`
   line-height: 20px !important;
   font-family: 'Montserrat', sans-serif;
 `;
-const SaveModalFooterButton = styled.button`
+const CreateListFooterButton = styled.button`
 cursor: pointer !important;
 display: inline-block !important;
 margin: 0px !important;
@@ -179,53 +166,29 @@ text-decoration: underline !important;
 width: 100% !important;
 `;
 
-function SaveModal(props) {
-  const { listClicked, saveModalToggle, photos, lists, IncrementStayCount, createListModalToggle} = props;
-  const mappedLists = lists.map ((listItem) => (
-    <ListItem
-      key={listItem._id}
-      onClick={listClicked}
-    >
-      <ListItemInner>
-        <LiImg>
-          <img src={`${listItem.tmb_url}`} alt="" width="65" height="65" />
-        </LiImg>
-        <LiInfo>
-          <LiTime>
-            Any time
-          </LiTime>
-          <LiName>
-            {listItem.title}
-          </LiName>
-          <LiLength>
-            {`${listItem.number} Stays`}
-          </LiLength>
-        </LiInfo>
-      </ListItemInner>
-    </ListItem>
-  ));
+function CreateListModal(props) {
+  const { createListModalToggle } = props;
   return (
-    <SaveModalContainer id="SaveModalContainer">
-      <SaveModalDiv id="SaveModalDiv">
-        <SaveModalHeader id="SaveModalHeader">
-          <CloseButton id="CloseButton" onClick={saveModalToggle}>X</CloseButton>
-          <SaveModalHeaderText id="SaveModalHeaderText">
-            <SaveListHeaderText id="SaveToListText">
-              Save To List
-            </SaveListHeaderText>
-          </SaveModalHeaderText>
-        </SaveModalHeader>
+    <CreateListContainer id="CreatListContainer">
+      <CreateListDiv id="CreatListDiv">
+        <CreateListHeader id="CreatListHeader">
+          <CloseButton id="CloseButton" onClick={createListModalToggle}>X</CloseButton>
+          <CreateListModalHeaderText id="CreatListModalHeaderText">
+            <CreateListHeaderText id="CreatListHeaderText">
+              Name this List
+            </CreateListHeaderText>
+          </CreateListModalHeaderText>
+        </CreateListHeader>
         <ListItems>
-          <div>{mappedLists}</div>
         </ListItems>
-        <SaveModalFooter>
-          <SaveModalFooterButton onClick={createListModalToggle}>
-            Create a list
-          </SaveModalFooterButton>
-        </SaveModalFooter>
-      </SaveModalDiv>
-      <SaveModalBG id="SaveModalBG" onClick={saveModalToggle} />
-    </SaveModalContainer>
+        <CreateListFooter>
+          <CreateListFooterButton>
+            Create
+          </CreateListFooterButton>
+        </CreateListFooter>
+      </CreateListDiv>
+      <CreateListModalDiv id="CreatListModalBG" onClick={createListModalToggle} />
+    </CreateListContainer>
   );
 }
-export default SaveModal;
+export default CreateListModal;
