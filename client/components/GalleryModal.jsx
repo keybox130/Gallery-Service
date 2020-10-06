@@ -49,6 +49,10 @@ const CloseButton = styled.button`
   border: none;
   padding:none;
   cursor: pointer;
+  background-color: #fff;
+  &:hover {
+    background-color: #F0EFEF;
+  }
 `;
 const ShareSaveDiv = styled.div`
 display: flex;

@@ -33,7 +33,6 @@ const SaveModalContainer = styled.div`
 const SaveModalDiv = styled.div`
   z-index: 6;
   width: 570px;
-  height: 360px;
   background-color: #fff;
   border-radius: 30px;
 `;
@@ -181,8 +180,8 @@ width: 100% !important;
 `;
 function SaveModal(props) {
   const { saveModalToggle, photos, lists } = props;
-  const mappedLists = lists.map ( (listItem, i) => (
-    <ListItem key={i}>
+  const mappedLists = lists.map ((listItem, i) => (
+    <ListItem key={listItem.list_id}>
       <ListItemInner>
         <LiImg>
           <img src={`${listItem.tmb_url}`} alt="" width="65" height="65" />
@@ -195,7 +194,7 @@ function SaveModal(props) {
             {listItem.title}
           </LiName>
           <LiLength>
-            {listItem.number} Stays
+            {`${listItem.number} Stays`}
           </LiLength>
         </LiInfo>
       </ListItemInner>
