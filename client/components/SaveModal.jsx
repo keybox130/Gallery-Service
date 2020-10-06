@@ -181,7 +181,7 @@ width: 100% !important;
 
 function SaveModal(props) {
   const { listClicked, saveModalToggle, photos, lists, IncrementStayCount} = props;
-  const mappedLists = lists.map ((listItem, i) => (
+  const mappedLists = lists.map ((listItem) => (
     <ListItem
       key={listItem._id}
       onClick={listClicked}
