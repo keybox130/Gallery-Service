@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+
 mongoose.connect('mongodb://localhost/gallery', { useNewUrlParser: true });
 
 // Connection shortcut
@@ -10,7 +11,7 @@ db.once('open', () => {
 });
 
 // Define Schema
-let schema = mongoose.Schema({
+const schema = mongoose.Schema({
   room_id: Number,
   title: String,
   rating: Number,
@@ -25,9 +26,21 @@ let schema = mongoose.Schema({
 });
 
 // Create model
-let Stay = mongoose.model('Stay', schema);
+const Stay = mongoose.model('Stay', schema);
+
+// Define Schema
+const ListSchema = mongoose.Schema({
+  list_id: Number,
+  title: String,
+  number: Number,
+  tmb_url: '',
+});
+
+// Create model
+const List = mongoose.model('List', ListSchema);
 
 module.exports = {
   Stay,
+  List,
   db,
 };

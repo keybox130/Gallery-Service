@@ -14,6 +14,7 @@
   },
   "scripts": {
     "seed": "node seeding/seeding.js",
+    "seedList": "node seeding/ListSeeding.js",
     "start": "nodemon server/index.js",
     "react-dev": "webpack -d --watch",
     "test": "jest --coverage --detectOpenHandles"

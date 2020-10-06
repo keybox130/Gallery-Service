@@ -55,17 +55,18 @@ class Images extends React.Component {
   }
 
   render() {
+    const { toggleMod, photos } = this.props;
     return (
       <>
         <HomeImages>
-          <HomeImg1 id="0"onClick={this.props.toggleMod} src={`${this.props.photos[0].photo_url}`} alt="Stay here" />
+          <HomeImg1 id="0" onClick={toggleMod} src={`${photos[0].photo_url}`} alt="Stay here" />
           <LeftCol>
-            <HomeImg2 id="1" onClick={this.props.toggleMod} src={`${this.props.photos[1].photo_url}`} alt="Stay here" />
-            <HomeImg3 id="2" onClick={this.props.toggleMod} src={`${this.props.photos[2].photo_url}`} alt="Stay here" />
+            <HomeImg2 id="1" onClick={toggleMod} src={`${photos[1].photo_url}`} alt="Stay here" />
+            <HomeImg3 id="2" onClick={toggleMod} src={`${photos[2].photo_url}`} alt="Stay here" />
           </LeftCol>
           <RightCol>
-            <HomeImg2 onClick={this.props.toggleMod} id="3" src={`${this.props.photos[3].photo_url}`} alt="Stay here" />
-            <HomeImg3 id="4" onClick={this.props.toggleMod} src={`${this.props.photos[4].photo_url}`} alt="Stay here" />
+            <HomeImg2 id="3" onClick={toggleMod} src={`${photos[3].photo_url}`} alt="Stay here" />
+            <HomeImg3 id="4" onClick={toggleMod} src={`${photos[4].photo_url}`} alt="Stay here" />
           </RightCol>
         </HomeImages>
       </>

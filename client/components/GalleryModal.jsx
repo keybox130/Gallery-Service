@@ -48,6 +48,11 @@ const CloseButton = styled.button`
   border-radius: 5px;
   border: none;
   padding:none;
+  cursor: pointer;
+  background-color: #fff;
+  &:hover {
+    background-color: #F0EFEF;
+  }
 `;
 const ShareSaveDiv = styled.div`
 display: flex;
@@ -66,6 +71,7 @@ const ShareButton = styled.button`
   padding: 0;
   border: none;
   background: none;
+  cursor: pointer;
   &:hover {
     background-color: #F0EFEF;
   }
@@ -79,6 +85,7 @@ const SaveButton = styled(ShareButton)`
   font-size: 15px;
   background-color: #fff;
   outline:none;
+  cursor: pointer;
   &:hover {
     background-color: #F0EFEF;
   }
@@ -95,6 +102,7 @@ const PreviousButton = styled.button`
   border-style: solid;
   border-width: 1px;
   outline:none;
+  cursor: pointer;
   &:hover {
     background-color: #F0EFEF;
   }
@@ -103,6 +111,7 @@ const PreviousButton = styled.button`
 
 const NextButton = styled(PreviousButton)`
   margin-right:25px;
+  cursor: pointer;
 `;
 
 const ImgCol = styled.div`
