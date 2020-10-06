@@ -234,6 +234,9 @@ class App extends React.Component {
           shareModalToggle={this.ShareModalToggle}
           showAllPhotos={this.showAllPhotos}
           prevOrNext={this.PrevOrNextImg}
+          saved={saved}
+          heartClick={this.heartClick}
+        heartClickUnsave={this.heartClickUnsave}
         />
       )
       : <div />;

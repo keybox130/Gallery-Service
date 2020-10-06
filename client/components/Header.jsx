@@ -8,7 +8,6 @@ const HeaderContent = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-
 `;
 const StayName = styled.h1`
 margin: 0px;
@@ -77,6 +76,7 @@ const ShareSave = styled.div`
 display: flex;
 flex-direction:row;
 text-decoration: underline;
+align-items:center;
 `;
 const Share = styled.p`
 font-family: 'Montserrat', sans-serif;
@@ -96,6 +96,7 @@ cursor: pointer;
 `;
 const EmptyHeart = styled.button`
   position: relative;
+  cursor: pointer;
   z-index: 1;
   background: transparent;
   height: 24px;
@@ -107,7 +108,6 @@ const EmptyHeart = styled.button`
   }
   justify-content: right;
   margin-right: 6px;
-  margin-top: 7px;
   overflow: hidden;
   stroke: rgb(255, 255, 255);
   outline: none;
@@ -116,6 +116,7 @@ const EmptyHeart = styled.button`
 
 const FilledHeart = styled.button`
   position: relative;
+  cursor: pointer;
   z-index: 1;
   background: transparent;
   height: 24px;
@@ -127,7 +128,6 @@ const FilledHeart = styled.button`
   }
   justify-content: right;
   margin-right: 6px;
-  margin-top: 7px;
   overflow: hidden;
   stroke: rgb(255, 255, 255);
   outline: none;

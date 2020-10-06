@@ -57,11 +57,12 @@ const CloseButton = styled.button`
 const ShareSaveDiv = styled.div`
 display: flex;
 flex-direction: row;
+width:119px;
 `;
 
 const ShareButton = styled.button`
   flex-direction: row;
-  width: 25px;
+  width: 50px;
   height: 25px;
   border-radius: 30px;
   font-family: 'Montserrat', sans-serif;
@@ -78,7 +79,7 @@ const ShareButton = styled.button`
 `;
 const SaveButton = styled(ShareButton)`
   flex-direction: row;
-  width: 25px;
+  width: 50px;
   height: 25px;
   border-radius: 30px;
   font-family: 'Montserrat', sans-serif;
@@ -134,6 +135,61 @@ const GalleryImage = styled.img`
 const ImgDescDiv = styled.div`
 font-family: 'Montserrat', sans-serif;
 `;
+const EmptyHeart = styled.button`
+  position: relative;
+  cursor: pointer;
+  z-index: 1;
+  background: transparent;
+  height: 24px;
+  svg {
+    background: transparent;
+    fill: rgba(0, 0, 0, 0.5);
+    min-height: 24px;
+    min-width: 24px;
+  }
+  justify-content: right;
+  margin-right: 6px;
+  overflow: hidden;
+  stroke: rgb(255, 255, 255);
+  outline: none;
+  border: none;
+`;
+
+const FilledHeart = styled.button`
+  position: relative;
+  cursor: pointer;
+  z-index: 1;
+  background: transparent;
+  height: 24px;
+  svg {
+    background: transparent;
+    fill: rgb(255, 56, 92);
+    min-height: 24px;
+    min-width: 24px;
+  }
+  justify-content: right;
+  margin-right: 6px;
+  overflow: hidden;
+  stroke: rgb(255, 255, 255);
+  outline: none;
+  border: none;
+`;
+const ShareButtonIcon = styled.button`
+cursor: pointer;
+z-index: 10;
+background: transparent;
+height: 24px;
+svg {
+  background: transparent;
+  fill: #F0EFEF;
+  min-height: 24px;
+  min-width: 24px;
+}
+overflow: hidden;
+stroke: black;
+outline: none;
+border: none;
+`;
 
 class GalleryModal extends React.Component {
   constructor(props) {
@@ -148,7 +204,7 @@ class GalleryModal extends React.Component {
   }
 
   render() {
-    const { photos, toggleMod, saveModalToggle, shareModalToggle, imageSelected } = this.props;
+    const { photos, toggleMod, saveModalToggle, shareModalToggle, imageSelected, saved, heartClick, heartClickUnsave} = this.props;
 
     // Get the ID num of the last image
     // console.log('gallery Modal, Photo ID. line 144', photos[this.props.photos.length - 1].id);
@@ -176,6 +232,16 @@ class GalleryModal extends React.Component {
         </NextButton>
       );
 
+    const heart = saved ? (
+        <FilledHeart type="button" onClick={heartClickUnsave}>
+          <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false"><path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z" /></svg>
+        </FilledHeart>
+    ) : (
+        <EmptyHeart type="button" onClick={heartClick}>
+          <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false"><path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z" /></svg>
+        </EmptyHeart>
+    );
+
     return (
       <GalleryModalDiv id="GalleryModalDiv">
 
@@ -187,8 +253,19 @@ class GalleryModal extends React.Component {
             {lastImageID}
           </ImgNums>
           <ShareSaveDiv id="ShareSaveDiv">
-            <ShareButton onClick={shareModalToggle}>^</ShareButton>
-            <SaveButton onClick={saveModalToggle}>Y</SaveButton>
+            <ShareButtonIcon type="button" onClick={shareModalToggle}>
+              <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" styles="display: block; fill: none; height: 16px; width: 16px; stroke: #F0EFEF; stroke-width: 2; overflow: visible;">
+                <g fill="none">
+                  <path d="M27 18v9a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-9">
+                  </path>
+                  <path d="M16 3v23V3z">
+                  </path>
+                  <path d="M6 13l9.293-9.293a1 1 0 0 1 1.414 0L26 13">
+                  </path>
+                </g>
+              </svg>
+            </ShareButtonIcon>
+            <>{heart}</>
           </ShareSaveDiv>
         </MainButtons>
         <GalleryDiv id="GalleryDiv">
