@@ -90,7 +90,7 @@ text-decoration: underline;
 font-size 14px;
 font-family: 'Montserrat', sans-serif;
 cursor: pointer;
-&:hover {
+:hover {
   font-color: #F0EFEF;
 }
 `;

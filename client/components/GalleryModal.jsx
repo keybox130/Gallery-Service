@@ -50,7 +50,7 @@ const CloseButton = styled.button`
   padding:none;
   cursor: pointer;
   background-color: #fff;
-  &:hover {
+  :hover {
     background-color: #F0EFEF;
   }
 `;
@@ -72,7 +72,7 @@ const ShareButton = styled.button`
   border: none;
   background: none;
   cursor: pointer;
-  &:hover {
+  :hover {
     background-color: #F0EFEF;
   }
 `;
@@ -86,7 +86,7 @@ const SaveButton = styled(ShareButton)`
   background-color: #fff;
   outline:none;
   cursor: pointer;
-  &:hover {
+  :hover {
     background-color: #F0EFEF;
   }
 `;
@@ -103,7 +103,7 @@ const PreviousButton = styled.button`
   border-width: 1px;
   outline:none;
   cursor: pointer;
-  &:hover {
+  :hover {
     background-color: #F0EFEF;
   }
 

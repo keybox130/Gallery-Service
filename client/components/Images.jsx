@@ -60,7 +60,7 @@ position:relative;
   padding-top:8px;
   cursor: pointer;
   background-color: #fff;
-  &:hover {
+  :hover {
     background-color: #F0EFEF;
   }
   position: relative;
