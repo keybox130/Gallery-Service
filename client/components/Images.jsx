@@ -47,6 +47,27 @@ const RightCol = styled.div`
   display: flex;
   flex-direction: column;
 `;
+const ShowAllPhotosButton = styled.div`
+position:relative;
+  z-index:1;
+  width: 135px;
+  height:27px;
+  font-family: 'Montserrat', sans-serif;
+  font-size:13px;
+  border-radius: 5px;
+  text-align:center;
+  border: 1px solid black;
+  padding-top:8px;
+  cursor: pointer;
+  background-color: #fff;
+  :hover {
+    background-color: #F0EFEF;
+  }
+  position: relative;
+  top: 539px;
+  right: -958px;
+
+`;
 
 class Images extends React.Component {
   constructor(props) {
@@ -55,9 +76,10 @@ class Images extends React.Component {
   }
 
   render() {
-    const { toggleMod, photos } = this.props;
+    const { toggleMod, photos, showAllPhotos} = this.props;
     return (
       <>
+      <ShowAllPhotosButton onClick={showAllPhotos}>Show all photos</ShowAllPhotosButton>
         <HomeImages>
           <HomeImg1 id="0" onClick={toggleMod} src={`${photos[0].photo_url}`} alt="Stay here" />
           <LeftCol>

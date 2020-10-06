@@ -50,7 +50,7 @@ const CloseButton = styled.button`
   padding:none;
   cursor: pointer;
   background-color: #fff;
-  &:hover {
+  :hover {
     background-color: #F0EFEF;
   }
 `;
@@ -72,7 +72,7 @@ const ShareButton = styled.button`
   border: none;
   background: none;
   cursor: pointer;
-  &:hover {
+  :hover {
     background-color: #F0EFEF;
   }
 `;
@@ -86,7 +86,7 @@ const SaveButton = styled(ShareButton)`
   background-color: #fff;
   outline:none;
   cursor: pointer;
-  &:hover {
+  :hover {
     background-color: #F0EFEF;
   }
 `;
@@ -103,7 +103,7 @@ const PreviousButton = styled.button`
   border-width: 1px;
   outline:none;
   cursor: pointer;
-  &:hover {
+  :hover {
     background-color: #F0EFEF;
   }
 
@@ -133,7 +133,6 @@ const GalleryImage = styled.img`
 `;
 const ImgDescDiv = styled.div`
 font-family: 'Montserrat', sans-serif;
-
 `;
 
 class GalleryModal extends React.Component {
@@ -149,7 +148,7 @@ class GalleryModal extends React.Component {
   }
 
   render() {
-    const { photos, toggleMod, saveModalToggle, shareModalToggle, imageSelected} = this.props;
+    const { photos, toggleMod, saveModalToggle, shareModalToggle, imageSelected } = this.props;
 
     // Get the ID num of the last image
     // console.log('gallery Modal, Photo ID. line 144', photos[this.props.photos.length - 1].id);
@@ -192,7 +191,6 @@ class GalleryModal extends React.Component {
             <SaveButton onClick={saveModalToggle}>Y</SaveButton>
           </ShareSaveDiv>
         </MainButtons>
-
         <GalleryDiv id="GalleryDiv">
           <div id="PreviousButton">{previousButton}</div>
           <ImgCol id="ImgCol">
