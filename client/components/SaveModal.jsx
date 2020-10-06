@@ -178,10 +178,11 @@ color: rgb(34, 34, 34) !important;
 text-decoration: underline !important;
 width: 100% !important;
 `;
+
 function SaveModal(props) {
   const { saveModalToggle, photos, lists } = props;
   const mappedLists = lists.map ((listItem, i) => (
-    <ListItem key={listItem.list_id}>
+    <ListItem key={listItem._id}>
       <ListItemInner>
         <LiImg>
           <img src={`${listItem.tmb_url}`} alt="" width="65" height="65" />

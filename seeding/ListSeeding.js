@@ -7,14 +7,12 @@ const { List } = require('../database/index');
 const dataToSeed = () => {
   const results = [];
   const obj = {};
-  obj.list_id = 1;
   obj.title = "Emmanuel's dream vacation";
   obj.number = 1;
-  obj.tmb_url = "https://imagesfec.s3.amazonaws.com/airbnb/2/092adb4e-4038-4629-a94c-869a7187.jpg";
+  obj.tmb_url = "https://imagesfec.s3.amazonaws.com/airbnb/4/620e64bc-fd62-41e0-b4c4-215adf30.jpg"
   results.push(obj);
   return results;
 };
-// console.log('Data to Seed: ', dataToSeed());
 
 const seedTheDB = () => {
   const arr = dataToSeed();

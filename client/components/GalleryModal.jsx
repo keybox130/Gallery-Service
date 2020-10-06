@@ -49,9 +49,9 @@ const CloseButton = styled.button`
   border: none;
   padding:none;
   cursor: pointer;
-  background-color: #fff;
+  background-color: rgb(239, 239, 239);
   :hover {
-    background-color: #F0EFEF;
+    background-color: rgb(219, 219, 219);
   }
 `;
 const ShareSaveDiv = styled.div`

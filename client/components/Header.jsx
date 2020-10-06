@@ -94,6 +94,46 @@ cursor: pointer;
   font-color: #F0EFEF;
 }
 `;
+const EmptyHeart = styled.button`
+  position: relative;
+  z-index: 1;
+  background: transparent;
+  height: 24px;
+  svg {
+    background: transparent;
+    fill: rgba(0, 0, 0, 0.5);
+    min-height: 24px;
+    min-width: 24px;
+  }
+  justify-content: right;
+  margin-right: 6px;
+  margin-top: 7px;
+  overflow: hidden;
+  stroke: rgb(255, 255, 255);
+  outline: none;
+  border: none;
+`;
+
+const FilledHeart = styled.button`
+  position: relative;
+  z-index: 1;
+  background: transparent;
+  height: 24px;
+  svg {
+    background: transparent;
+    fill: rgb(255, 56, 92);
+    min-height: 24px;
+    min-width: 24px;
+  }
+  justify-content: right;
+  margin-right: 6px;
+  margin-top: 7px;
+  overflow: hidden;
+  stroke: rgb(255, 255, 255);
+  outline: none;
+  border: none;
+`;
+
 class Header extends React.Component {
   constructor(props) {
     super(props);
@@ -101,9 +141,28 @@ class Header extends React.Component {
   }
 
   render() {
-    const { title, rating, rating_count, super_host, location } = this.props.stay;
-    const Superhost = super_host ? <><SuperHostIcon></SuperHostIcon><SuperHost>Superhost</SuperHost></>
+    const { stay, saved, heartClick } = this.props;
+    const { title, rating, rating_count, super_host, location } = stay;
+
+    const Superhost = super_host ? (
+      <>
+      <SuperHostIcon />
+        <SuperHost>
+          Superhost
+        </SuperHost>
+      </>
+    )
       : <div />;
+
+    const heart = saved ? (
+      <FilledHeart type="button" onClick={heartClick}>
+        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false"><path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z" /></svg>
+      </FilledHeart>
+    ) : (
+      <EmptyHeart type="button" onClick={heartClick}>
+        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false"><path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z" /></svg>
+      </EmptyHeart>
+    );
     return (
       <div>
         <StayName>{title}</StayName>
@@ -117,7 +176,8 @@ class Header extends React.Component {
           </RatingLocation>
           <ShareSave>
             <Share>Share</Share>
-            <Save onClick={this.props.saveModalToggle} >Save</Save>
+            <>{heart}</>
+            <Save onClick={this.props.saveModalToggle}>Save</Save>
           </ShareSave>
         </HeaderContent>
       </div>

@@ -60,6 +60,7 @@ class App extends React.Component {
       saveModalShown: false,
       shareModalShown: false,
       lists: null,
+      saved: false,
     };
     this.getStay = this.getStay.bind(this);
     this.getLists = this.getLists.bind(this);
@@ -68,6 +69,8 @@ class App extends React.Component {
     this.PrevOrNextImg = this.PrevOrNextImg.bind(this);
     this.SaveModalToggle = this.SaveModalToggle.bind(this);
     this.ShareModalToggle = this.ShareModalToggle.bind(this);
+    this.heartClick = this.heartClick.bind(this);
+    this.incrementStayCount = this.incrementStayCount.bind(this);
   }
 
   // Invokes getStay with hardcoded stay
@@ -148,19 +151,55 @@ class App extends React.Component {
     // this.setState(prevState => ({ saveModalShown: !saveModalShown }));
   }
 
+  heartClick() {
+    const { saved } = this.state;
+    console.log("heartClick invoked");
+    this.setState({
+      saved: !saved,
+    });
+    // this.setState(prevState => ({ saveModalShown: !saveModalShown }));
+  }
+
   ShareModalToggle() {
     console.log("Share Modal invoked");
   }
 
+  // Incrment The count of stay
+  incrementStayCount() {
+    axios.post('/list', {
+      firstName: 'Fred',
+      lastName: 'Flintstone'
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
+
   render() {
     // destructure state properties
-    const { imageChosen, stay, lists, galleryShown, saveModalShown } = this.state;
+    const { imageChosen, stay, lists, galleryShown, saveModalShown, saved } = this.state;
 
     // If state.stay is true proceed with rendering Header component, else show loading.
-    const header = stay ? <Header stay={stay} saveModalToggle={this.SaveModalToggle} />
+    const header = stay ? (
+      <Header
+        stay={stay}
+        saveModalToggle={this.SaveModalToggle}
+        saved={saved}
+        heartClick={this.heartClick}
+      />
+    )
       : <h1>Loading...</h1>;
     // If state.stay is true proceed with rendering Images component, else show loading.
-    const images = stay ? <Images toggleMod={this.toggleModal} photos={stay.photos} showAllPhotos={this.showAllPhotos} />
+    const images = stay ? (
+      <Images
+        toggleMod={this.toggleModal}
+        photos={stay.photos}
+        showAllPhotos={this.showAllPhotos}
+      />
+    )
       : <h1>Loading Images...</h1>;
 
     // Conditionally Render Gallery Modal
@@ -177,10 +216,15 @@ class App extends React.Component {
         />
       )
       : <div />;
-      // Conditionally Render Save Modal
+    // Conditionally Render Save Modal
     const savemodal = (saveModalShown && lists)
       ? (
-        <SaveModal saveModalToggle={this.SaveModalToggle} photos={stay.photos} lists={lists} />
+        <SaveModal
+          saveModalToggle={this.SaveModalToggle}
+          photos={stay.photos}
+          lists={lists}
+          incrementStayCount={this.incrementStayCount}
+        />
       )
       : <div />;
 
