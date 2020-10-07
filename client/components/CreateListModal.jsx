@@ -66,6 +66,7 @@ const CreateListHeaderText = styled.div`
 const ListItems = styled.div`
   padding: 20px 16px !important;
   overflow-y: auto !important;
+  align-items:center;
 `;
 const ListItem = styled.div`
   cursor: pointer !important;
@@ -167,6 +168,26 @@ color: rgb(34, 34, 34) !important;
 text-decoration: underline !important;
 width: 100% !important;
 `;
+const NewListInput = styled.input`
+  width: 500px;
+  height:40px;
+  border: none !important;
+  outline: none !important;
+  padding: 10px;
+  margin: 26px 12px 10px !important;
+  border-radius: 8px !important;
+ box-shadow: rgb(176, 176, 176) 0px 0px 0px 1px inset !important;
+ font-family: 'Montserrat', sans-serif;
+  min-height: 1px !important;
+  color: inherit !important;
+  background-color: transparent !important;
+  font-family: inherit !important;
+  font-size: inherit !important;
+  font-weight: inherit !important;
+  line-height: inherit !important;
+  appearance: none !important;
+
+`;
 
 class CreateListModal extends React.Component {
   constructor(props) {
@@ -221,7 +242,7 @@ class CreateListModal extends React.Component {
           </CreateListHeader>
           <ListItems>
             <form>
-              <input type="text" value={this.state.value} onChange={this.handleChange} />
+              <NewListInput type="text" value={this.state.value} onChange={this.handleChange} />
             </form>
           </ListItems>
           <CreateListFooter>
