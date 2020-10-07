@@ -117,10 +117,12 @@ const NextButton = styled(PreviousButton)`
 `;
 
 const ImgCol = styled.div`
-  //width: 25%;
+  height: 750px;
+  width: 1350px;
+  overflow: hidden;
   display:flex;
   flex-direction:column;
-   align-items: center;
+  align-items: center;
 `;
 const ImgNums = styled.div`
 display: flex;

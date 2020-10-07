@@ -193,7 +193,6 @@ class CreateListModal extends React.Component {
   }
 
   postList(ListName) {
-    //console.log("props.photos ", this.props.currentStay.photos[0].photo_url);
     axios.post('/list', {
       title: ListName,
       number: 1,
@@ -221,13 +220,12 @@ class CreateListModal extends React.Component {
             </CreateListModalHeaderText>
           </CreateListHeader>
           <ListItems>
-          <form onSubmit={this.handleSubmit}>
-            <input type="text" value={this.state.value} onChange={this.handleChange} />
-          <input type="submit" value="Submit" />
-        </form>
+            <form>
+              <input type="text" value={this.state.value} onChange={this.handleChange} />
+            </form>
           </ListItems>
           <CreateListFooter>
-            <CreateListFooterButton>
+            <CreateListFooterButton onClick={this.handleSubmit}>
               Create
             </CreateListFooterButton>
           </CreateListFooter>
