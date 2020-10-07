@@ -13,6 +13,7 @@ db.once('open', () => {
 // Define Schema
 const schema = mongoose.Schema({
   room_id: Number,
+  list: String,
   title: String,
   rating: Number,
   rating_count: Number,
@@ -31,6 +32,7 @@ const Stay = mongoose.model('Stay', schema);
 // Define Schema
 const ListSchema = mongoose.Schema({
   list_id: Number,
+  tmb_url: String,
   title: String,
   number: Number,
   tmb_url: '',

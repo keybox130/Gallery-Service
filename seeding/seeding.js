@@ -62,10 +62,10 @@ const imageSeeder = () => {
 // Seed the DB
 const dataToSeed = () => {
   const results = [];
-
   for (let count = 1; count < 101; count++) {
     const obj = {};
     obj.room_id = count;
+    obj.list = "";
     obj.title = stayName[randomInt(0, stayName.length, true)];
     obj.rating = randomInt(3, 5, false);
     obj.rating_count = randomInt(10, 300, true);
@@ -75,7 +75,7 @@ const dataToSeed = () => {
     results.push(obj);
   }
   return results;
-};1
+};
 // console.log('Data to Seed: ', dataToSeed());
 
 const seedTheDB = () => {

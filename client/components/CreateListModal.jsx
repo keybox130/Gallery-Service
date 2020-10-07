@@ -1,44 +1,33 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const SaveModalBG = styled.div`
+const axios = require('axios');
+
+const CreateListModalDiv = styled.div`
   height: 100vh;
   width: 100vw;
   background-color: #000;
   opacity: 50%;
   position: absolute;
 `;
-const SaveModalContainer = styled.div`
+const CreateListContainer = styled.div`
   height: 100vh;
   width: 100vw;
   display: flex;
   align-items: center;
   justify-content: center;
-  animation-duration: 1s;
-  animation-name: slidein;
-  }
-  @keyframes slidein {
-  from {
-    margin-top: 100%;
-    height: 300vh;
-    opacity:25%;
-  }
-  to {
-    margin-top: 0%;
-    height: 100vh;
-  }
-  }
+
 `;
 
-const SaveModalDiv = styled.div`
-  z-index: 6;
+const CreateListDiv = styled.div`
+  z-index: 7;
   width: 570px;
   background-color: #fff;
   border-radius: 30px;
 `;
 
-const SaveModalHeader = styled.div`
-  z-index: 6;
+const CreateListHeader = styled.div`
+  z-index: 7;
   display: flex;
   justify-content: flex-start;
   position: relative;
@@ -46,7 +35,7 @@ const SaveModalHeader = styled.div`
   padding: 20px 24px !important;
   border-bottom: 1px solid rgb(235, 235, 235) !important;
 `;
-const SaveModalHeaderText = styled.div`
+const CreateListModalHeaderText = styled.div`
   flex: 0 1 auto;
   width: 130px;
   position: absolute;
@@ -68,7 +57,7 @@ const CloseButton = styled.button`
   }
   outline:none;
 `;
-const SaveListHeaderText = styled.div`
+const CreateListHeaderText = styled.div`
   font-family: 'Montserrat', sans-serif;
   overflow: hidden !important;
   flex: 0 1 auto !important;
@@ -144,7 +133,7 @@ const LiLength = styled.div`
   color: rgb(34, 34, 34) !important;
   font-family: 'Montserrat', sans-serif;
 `;
-const SaveModalFooter = styled.div`
+const CreateListFooter = styled.div`
   -webkit-box-pack: justify !important;
   -webkit-box-align: center !important;
   display: flex !important;
@@ -157,7 +146,7 @@ const SaveModalFooter = styled.div`
   line-height: 20px !important;
   font-family: 'Montserrat', sans-serif;
 `;
-const SaveModalFooterButton = styled.button`
+const CreateListFooterButton = styled.button`
 cursor: pointer !important;
 display: inline-block !important;
 margin: 0px !important;
@@ -179,53 +168,73 @@ text-decoration: underline !important;
 width: 100% !important;
 `;
 
-function SaveModal(props) {
-  const { listClicked, saveModalToggle, photos, lists, IncrementStayCount, createListModalToggle} = props;
-  const mappedLists = lists.map ((listItem) => (
-    <ListItem
-      key={listItem._id}
-      onClick={listClicked}
-    >
-      <ListItemInner>
-        <LiImg>
-          <img src={`${listItem.tmb_url}`} alt="" width="65" height="65" />
-        </LiImg>
-        <LiInfo>
-          <LiTime>
-            Any time
-          </LiTime>
-          <LiName>
-            {listItem.title}
-          </LiName>
-          <LiLength>
-            {`${listItem.number} Stays`}
-          </LiLength>
-        </LiInfo>
-      </ListItemInner>
-    </ListItem>
-  ));
-  return (
-    <SaveModalContainer id="SaveModalContainer">
-      <SaveModalDiv id="SaveModalDiv">
-        <SaveModalHeader id="SaveModalHeader">
-          <CloseButton id="CloseButton" onClick={saveModalToggle}>X</CloseButton>
-          <SaveModalHeaderText id="SaveModalHeaderText">
-            <SaveListHeaderText id="SaveToListText">
-              Save To List
-            </SaveListHeaderText>
-          </SaveModalHeaderText>
-        </SaveModalHeader>
-        <ListItems>
-          <div>{mappedLists}</div>
-        </ListItems>
-        <SaveModalFooter>
-          <SaveModalFooterButton onClick={createListModalToggle}>
-            Create a list
-          </SaveModalFooterButton>
-        </SaveModalFooter>
-      </SaveModalDiv>
-      <SaveModalBG id="SaveModalBG" onClick={saveModalToggle} />
-    </SaveModalContainer>
-  );
+class CreateListModal extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {listname: ''};
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({listname: event.target.value});
+  }
+
+  handleSubmit(event) {
+    const { listname } = this.state;
+    const { createListModalToggle, heartClickUnsave, saveModalToggle, getLists } = this.props;
+    this.postList(listname);
+    heartClickUnsave();
+    getLists();
+    // saveModalToggle();
+    createListModalToggle();
+    event.preventDefault();
+  }
+
+  postList(ListName) {
+    //console.log("props.photos ", this.props.currentStay.photos[0].photo_url);
+    axios.post('/list', {
+      title: ListName,
+      number: 1,
+      tmb_url: this.props.currentStay.photos[0].photo_url,
+    })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  render() {
+    const { createListModalToggle } = this.props;
+    return (
+      <CreateListContainer id="CreatListContainer">
+        <CreateListDiv id="CreatListDiv">
+          <CreateListHeader id="CreatListHeader">
+            <CloseButton id="CloseButton" onClick={createListModalToggle}>X</CloseButton>
+            <CreateListModalHeaderText id="CreatListModalHeaderText">
+              <CreateListHeaderText id="CreatListHeaderText">
+                Name this List
+              </CreateListHeaderText>
+            </CreateListModalHeaderText>
+          </CreateListHeader>
+          <ListItems>
+          <form onSubmit={this.handleSubmit}>
+            <input type="text" value={this.state.value} onChange={this.handleChange} />
+          <input type="submit" value="Submit" />
+        </form>
+          </ListItems>
+          <CreateListFooter>
+            <CreateListFooterButton>
+              Create
+            </CreateListFooterButton>
+          </CreateListFooter>
+        </CreateListDiv>
+        <CreateListModalDiv id="CreatListModalBG" onClick={createListModalToggle} />
+      </CreateListContainer>
+    )
+  }
 }
-export default SaveModal;
+export default CreateListModal;
