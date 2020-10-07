@@ -117,7 +117,7 @@ const NextButton = styled(PreviousButton)`
 `;
 
 const ImgCol = styled.div`
-  height: 750px;
+  height: 760px;
   width: 1350px;
   overflow: hidden;
   display:flex;
@@ -193,6 +193,12 @@ stroke: black;
 outline: none;
 border: none;
 `;
+const NavBttnSpacer = styled.div`
+width:75px;
+`;
+const NavFwdBttnSpacer = styled.div`
+width:100px;
+`;
 
 class GalleryModal extends React.Component {
   constructor(props) {
@@ -207,7 +213,16 @@ class GalleryModal extends React.Component {
   }
 
   render() {
-    const { photos, toggleMod, saveModalToggle, shareModalToggle, imageSelected, saved, heartClick, heartClickUnsave} = this.props;
+    const {
+      photos,
+      toggleMod,
+      saveModalToggle,
+      shareModalToggle,
+      imageSelected,
+      saved,
+      heartClick,
+      heartClickUnsav
+    } = this.props;
 
     // Get the ID num of the last image
     // console.log('gallery Modal, Photo ID. line 144', photos[this.props.photos.length - 1].id);
@@ -220,7 +235,7 @@ class GalleryModal extends React.Component {
     const ImgDesc = photos[imageSelected].description;
 
     // If the selected image is the first, do not show previous button
-    const previousButton = imageSelected === 0 ? <div />
+    const previousButton = imageSelected === 0 ? <NavBttnSpacer />
       : (
         <PreviousButton id="Back" onClick={this.backOrForth}>
           &#60;
@@ -228,7 +243,7 @@ class GalleryModal extends React.Component {
       );
 
     // If the imageSelected is the last image do not show next button
-    const nextButton = imageSelected === lastImageID - 1 ? <div />
+    const nextButton = imageSelected === lastImageID - 1 ? <NavFwdBttnSpacer />
       : (
         <NextButton id="Forward" onClick={this.backOrForth}>
           &#62;
@@ -236,13 +251,13 @@ class GalleryModal extends React.Component {
       );
 
     const heart = saved ? (
-        <FilledHeart type="button" onClick={heartClickUnsave}>
-          <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false"><path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z" /></svg>
-        </FilledHeart>
+      <FilledHeart type="button" onClick= {heartClickUnsave}>
+        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false"><path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z" /></svg>
+      </FilledHeart>
     ) : (
-        <EmptyHeart type="button" onClick={heartClick}>
-          <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false"><path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z" /></svg>
-        </EmptyHeart>
+      <EmptyHeart type="button" onClick={heartClick}>
+        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false"><path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z" /></svg>
+      </EmptyHeart>
     );
 
     return (

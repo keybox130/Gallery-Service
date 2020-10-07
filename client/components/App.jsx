@@ -80,7 +80,7 @@ class App extends React.Component {
 
   // Invokes getStay with hardcoded stay
   componentDidMount() {
-    this.getStay(70);
+    this.getStay(71);
     this.getLists();
   }
 
