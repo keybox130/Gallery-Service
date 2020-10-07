@@ -93,6 +93,7 @@ const SaveButton = styled(ShareButton)`
 `;
 
 const PreviousButton = styled.button`
+  // position: relative;
   width: 50px;
   height: 50px;
   margin-left:25px;
@@ -276,7 +277,6 @@ class GalleryModal extends React.Component {
           </ImgCol>
           <div id="NextButton">{nextButton}</div>
         </GalleryDiv>
-
       </GalleryModalDiv>
     );
   }

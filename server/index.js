@@ -39,7 +39,7 @@ app.get('/list', (req, res) => {
 });
 // Post to list collection
 app.post('/list', (req, res) => {
-  console.log("Post req ", req.body);
+  //console.log("Post req ", req.body);
   List.create(req.body, (err, data) => {
     if (err) {
       res.status(400).send(err);
