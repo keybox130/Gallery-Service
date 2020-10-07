@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
+const axios = require('axios');
+
 const CreateListModalDiv = styled.div`
   height: 100vh;
   width: 100vw;
@@ -166,29 +168,73 @@ text-decoration: underline !important;
 width: 100% !important;
 `;
 
-function CreateListModal(props) {
-  const { createListModalToggle } = props;
-  return (
-    <CreateListContainer id="CreatListContainer">
-      <CreateListDiv id="CreatListDiv">
-        <CreateListHeader id="CreatListHeader">
-          <CloseButton id="CloseButton" onClick={createListModalToggle}>X</CloseButton>
-          <CreateListModalHeaderText id="CreatListModalHeaderText">
-            <CreateListHeaderText id="CreatListHeaderText">
-              Name this List
-            </CreateListHeaderText>
-          </CreateListModalHeaderText>
-        </CreateListHeader>
-        <ListItems>
-        </ListItems>
-        <CreateListFooter>
-          <CreateListFooterButton>
-            Create
-          </CreateListFooterButton>
-        </CreateListFooter>
-      </CreateListDiv>
-      <CreateListModalDiv id="CreatListModalBG" onClick={createListModalToggle} />
-    </CreateListContainer>
-  );
+class CreateListModal extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {listname: ''};
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({listname: event.target.value});
+  }
+
+  handleSubmit(event) {
+    const { listname } = this.state;
+    const { createListModalToggle, heartClickUnsave, saveModalToggle, getLists } = this.props;
+    this.postList(listname);
+    heartClickUnsave();
+    getLists();
+    // saveModalToggle();
+    createListModalToggle();
+    event.preventDefault();
+  }
+
+  postList(ListName) {
+    //console.log("props.photos ", this.props.currentStay.photos[0].photo_url);
+    axios.post('/list', {
+      title: ListName,
+      number: 1,
+      tmb_url: this.props.currentStay.photos[0].photo_url,
+    })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  render() {
+    const { createListModalToggle } = this.props;
+    return (
+      <CreateListContainer id="CreatListContainer">
+        <CreateListDiv id="CreatListDiv">
+          <CreateListHeader id="CreatListHeader">
+            <CloseButton id="CloseButton" onClick={createListModalToggle}>X</CloseButton>
+            <CreateListModalHeaderText id="CreatListModalHeaderText">
+              <CreateListHeaderText id="CreatListHeaderText">
+                Name this List
+              </CreateListHeaderText>
+            </CreateListModalHeaderText>
+          </CreateListHeader>
+          <ListItems>
+          <form onSubmit={this.handleSubmit}>
+            <input type="text" value={this.state.value} onChange={this.handleChange} />
+          <input type="submit" value="Submit" />
+        </form>
+          </ListItems>
+          <CreateListFooter>
+            <CreateListFooterButton>
+              Create
+            </CreateListFooterButton>
+          </CreateListFooter>
+        </CreateListDiv>
+        <CreateListModalDiv id="CreatListModalBG" onClick={createListModalToggle} />
+      </CreateListContainer>
+    )
+  }
 }
 export default CreateListModal;

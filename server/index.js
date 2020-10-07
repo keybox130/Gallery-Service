@@ -1,11 +1,12 @@
 const express = require('express');
 const path = require('path');
+const bodyParser = require('body-parser');
 const { Stay, List } = require('../database/index');
 // const { List } = require('../database/list');
 
 const app = express();
 const port = 3000;
-
+app.use(bodyParser.json());
 app.use('/', express.static(path.join(__dirname, '../client/dist')));
 // Get all stays
 app.get('/stays', (req, res) => {
@@ -34,6 +35,16 @@ app.get('/list', (req, res) => {
       res.status(400).send(err);
     }
     res.status(200).send(data);
+  });
+});
+// Post to list collection
+app.post('/list', (req, res) => {
+  console.log("Post req ", req.body);
+  List.create(req.body, (err, data) => {
+    if (err) {
+      res.status(400).send(err);
+    }
+    res.status(200).send();
   });
 });
 

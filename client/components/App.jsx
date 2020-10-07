@@ -148,10 +148,10 @@ class App extends React.Component {
     });
   }
 
- // eslint-disable-next-line class-methods-use-this
+  // eslint-disable-next-line class-methods-use-this
   ShareModalToggle() {
-  console.log('Share Modal invoked');
-}
+    console.log('Share Modal invoked');
+  }
 
   SaveModalToggle() {
     const { saveModalShown } = this.state;
@@ -268,8 +268,11 @@ class App extends React.Component {
     const createListModal = createModalShown
       ? (
         <CreateListModal
+          getLists={this.getLists}
+          currentStay={this.state.stay}
           saveModalToggle={this.SaveModalToggle}
           createListModalToggle={this.CreateListModalToggle}
+          heartClickUnsave={this.heartClickUnsave}
           lists={lists}
           IncrementStayCount={this.IncrementStayCount}
           listClicked={this.listClicked}
