@@ -19,7 +19,7 @@ const axios = require('axios');
 const HeaderImg = styled.div`
   flex-direction: row;
   height: 100px;
-  background-image: url("header.png");
+  background-image: url("https://imagesfec.s3.amazonaws.com/airbnb/header.png");
   background-repeat: no-repeat;
   background-size: auto 100px;
   background-position: center;
@@ -51,7 +51,7 @@ const CreateListDiv = styled.div`
 position: absolute;
 `;
 
-class App extends React.Component {
+class Gallery extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -86,7 +86,7 @@ class App extends React.Component {
 
   // Gets selected stay
   getStay(roomId) {
-    axios(`/stays/${roomId}`)
+    axios(`/gallery/stays/${roomId}`)
       .then((response) => {
         this.setState({
           stay: response.data[0],
@@ -99,7 +99,7 @@ class App extends React.Component {
 
   // Get All Lists in list DB
   getLists() {
-    axios('/list')
+    axios('/gallery/list')
       .then((response) => {
         this.setState({
           lists: response.data,
@@ -303,4 +303,4 @@ class App extends React.Component {
 // this.setState(newState);
 // console.log('State after setState:', this.state);
 
-export default App;
+export default Gallery;
