@@ -192,19 +192,23 @@ const NewListInput = styled.input`
 class CreateListModal extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {listname: ''};
-
+    this.state = { listname: '' };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
-    this.setState({listname: event.target.value});
+    this.setState({ listname: event.target.value });
   }
 
   handleSubmit(event) {
     const { listname } = this.state;
-    const { createListModalToggle, heartClickUnsave, saveModalToggle, getLists } = this.props;
+    const {
+      createListModalToggle,
+      heartClickUnsave,
+      saveModalToggle,
+      getLists
+    } = this.props;
     this.postList(listname);
     heartClickUnsave();
     getLists();
@@ -229,6 +233,7 @@ class CreateListModal extends React.Component {
 
   render() {
     const { createListModalToggle } = this.props;
+    const { value } = this.state;
     return (
       <CreateListContainer id="CreatListContainer">
         <CreateListDiv id="CreatListDiv">
@@ -242,7 +247,7 @@ class CreateListModal extends React.Component {
           </CreateListHeader>
           <ListItems>
             <form>
-              <NewListInput type="text" value={this.state.value} onChange={this.handleChange} />
+              <NewListInput type="text" value={value} onChange={this.handleChange} />
             </form>
           </ListItems>
           <CreateListFooter>

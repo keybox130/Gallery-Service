@@ -133,63 +133,52 @@ const FilledHeart = styled.button`
   border: none;
 `;
 
-class Header extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+function Header(props) {
+  const { stay, saved, heartClick, heartClickUnsave, saveModalToggle } = props;
+  const { title, rating, rating_count, super_host, location } = stay;
 
-  render() {
-    const { stay, saved, heartClick, heartClickUnsave, saveModalToggle } = this.props;
-    const { title, rating, rating_count, super_host, location } = stay;
+  const Superhost = super_host ? (
+    <>
+      <SuperHostIcon />
+      <SuperHost>
+        Superhost
+      </SuperHost>
+    </>
+  )
+    : <div />;
 
-    const Superhost = super_host ? (
-      <>
-        <SuperHostIcon />
-        <SuperHost>
-          Superhost
-        </SuperHost>
-      </>
-    )
-      : <div />;
-
-    const heart = saved ? (
-      <FilledHeart type="button" onClick={heartClickUnsave}>
-        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false"><path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z" /></svg>
-      </FilledHeart>
-    ) : (
-      <EmptyHeart type="button" onClick={heartClick}>
-        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false"><path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z" /></svg>
-      </EmptyHeart>
-    );
-    return (
-      <div>
-        <StayName>{title}</StayName>
-        <HeaderContent>
-          <RatingLocation>
-            <RatingStar>*</RatingStar>
-            <Rating>{rating}</Rating>
-            <RatingCount>
-              (
-              {rating_count}
-              )
-            </RatingCount>
-            <SuperHostDiv>{Superhost}</SuperHostDiv>
-            <Location>{location}</Location>
-          </RatingLocation>
-          <ShareSave>
-            <Share>Share</Share>
-            <>{heart}</>
-            <Save onClick={saveModalToggle}>Save</Save>
-          </ShareSave>
-        </HeaderContent>
-      </div>
-    );
-  }
+  const heart = saved ? (
+    <FilledHeart type="button" onClick={heartClickUnsave}>
+      <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false"><path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z" /></svg>
+    </FilledHeart>
+  ) : (
+    <EmptyHeart type="button" onClick={heartClick}>
+      <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false"><path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z" /></svg>
+    </EmptyHeart>
+  );
+  return (
+    <div>
+      <StayName>{title}</StayName>
+      <HeaderContent>
+        <RatingLocation>
+          <RatingStar>*</RatingStar>
+          <Rating>{rating}</Rating>
+          <RatingCount>
+            (
+            {rating_count}
+            )
+          </RatingCount>
+          <SuperHostDiv>{Superhost}</SuperHostDiv>
+          <Location>{location}</Location>
+        </RatingLocation>
+        <ShareSave>
+          <Share>Share</Share>
+          <>{heart}</>
+          <Save onClick={saveModalToggle}>Save</Save>
+        </ShareSave>
+      </HeaderContent>
+    </div>
+  );
 }
 
-// Header.propTypes = {
-//   stay.title: PropTypes.string.isRequired,
-//   rating: PropTypes.string.isRequired,
-// };
 export default Header;

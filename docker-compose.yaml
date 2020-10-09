@@ -1,0 +1,19 @@
+
+version: "3.7"
+
+services:
+  app:
+    container_name: emmanuelmota/galleryservice-01
+    image: emmanuelmota/galleryservice-01
+    restart: always
+    build: .
+    ports:
+     - "80:3000"
+
+
+
+
+# mysql:
+#   build: ./database
+#   environment:
+#     MYSQL_ ROOT_PASSWORD: student

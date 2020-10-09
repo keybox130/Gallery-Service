@@ -204,6 +204,7 @@ class GalleryModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      listStayCount: 1,
     };
     this.backOrForth = this.backOrForth.bind(this);
   }

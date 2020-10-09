@@ -19,7 +19,7 @@ const axios = require('axios');
 const HeaderImg = styled.div`
   flex-direction: row;
   height: 100px;
-  background-image: url("header.png");
+  background-image: url("https://imagesfec.s3.amazonaws.com/airbnb/header.png");
   background-repeat: no-repeat;
   background-size: auto 100px;
   background-position: center;
@@ -183,7 +183,7 @@ class App extends React.Component {
     this.SaveModalToggle();
   }
 
-  // Incrment The count of stay
+  // Incrment The count of stay ( This function is a coming feature )
   // eslint-disable-next-line class-methods-use-this
   IncrementStayCount(currentCount) {
     console.log('Invoked increment Stay count', currentCount );
@@ -269,7 +269,7 @@ class App extends React.Component {
       ? (
         <CreateListModal
           getLists={this.getLists}
-          currentStay={this.state.stay}
+          currentStay={stay}
           saveModalToggle={this.SaveModalToggle}
           createListModalToggle={this.CreateListModalToggle}
           heartClickUnsave={this.heartClickUnsave}
@@ -296,11 +296,5 @@ class App extends React.Component {
     );
   }
 }
-
-// console.log("Save Modal invoked");
-// const newState = Object.assign({}, this.state);
-// newState.saveModalShown = !this.state.saveModalShown;
-// this.setState(newState);
-// console.log('State after setState:', this.state);
 
 export default App;
