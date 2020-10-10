@@ -44,7 +44,7 @@ const CreateListDiv = styled.div`
 position: absolute;
 `;
 
-class App extends React.Component {
+class Gallery extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -80,7 +80,7 @@ class App extends React.Component {
 
   // Gets selected stay
   getStay(roomId) {
-    axios(`/stays/${roomId}`)
+    axios(`/gallery/stays/${roomId}`)
       .then((response) => {
         this.setState({
           stay: response.data[0],
@@ -93,7 +93,7 @@ class App extends React.Component {
 
   // Get All Lists in list DB
   getLists() {
-    axios('/list')
+    axios('/gallery/list')
       .then((response) => {
         this.setState({
           lists: response.data,
@@ -294,4 +294,5 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default Gallery;
+
