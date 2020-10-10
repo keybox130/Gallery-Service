@@ -209,6 +209,7 @@ class GalleryModal extends React.Component {
     this.backOrForth = this.backOrForth.bind(this);
   }
 
+  // Set the Direction of movement based on the id of target clicked
   backOrForth(e) {
     this.props.prevOrNext(e.target.id);
   }
@@ -226,7 +227,6 @@ class GalleryModal extends React.Component {
     } = this.props;
 
     // Get the ID num of the last image
-    // console.log('gallery Modal, Photo ID. line 144', photos[this.props.photos.length - 1].id);
     const lastImageID = photos[this.props.photos.length - 1].id;
 
     // Get chosen Img from app state

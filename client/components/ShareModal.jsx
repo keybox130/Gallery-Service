@@ -1,6 +1,7 @@
+// This Component is an upcoming feature and is not ready for public release
 import React from 'react';
 import styled from 'styled-components';
-
+// This Component is an upcoming feature and is not ready for public release
 const SaveModalBG = styled.div`
   height: 100vh;
   width: 100vw;

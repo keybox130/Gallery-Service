@@ -197,10 +197,12 @@ class CreateListModal extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  // Form Change Handler
   handleChange(event) {
     this.setState({ listname: event.target.value });
   }
 
+  // Create List Handler
   handleSubmit(event) {
     const { listname } = this.state;
     const {
@@ -212,11 +214,11 @@ class CreateListModal extends React.Component {
     this.postList(listname);
     heartClickUnsave();
     getLists();
-    // saveModalToggle();
     createListModalToggle();
     event.preventDefault();
   }
 
+  // Axios for posting the list
   postList(ListName) {
     axios.post('/list', {
       title: ListName,

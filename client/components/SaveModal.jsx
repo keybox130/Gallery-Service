@@ -187,6 +187,8 @@ function SaveModal(props) {
     IncrementStayCount,
     createListModalToggle
   } = props;
+
+  // Mapp over the data from the list DB
   const mappedLists = lists.map ((listItem) => (
     <ListItem
       key={listItem._id}
