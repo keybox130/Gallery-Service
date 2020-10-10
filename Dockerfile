@@ -5,14 +5,13 @@ FROM node:12.18.2
 # RUN mkdir -p /src/app
 
 # Tell your container where your app's source code will live
-WORKDIR /src/app
+WORKDIR /usr/src/app
 #
 COPY package.json .
 # Does your app have any dependencies that should be installed?
 RUN npm install
 # What source code do you want to copy, and where to put it?
 COPY . .
-
 
 
 # What port will the container talk to the outside world with once created?
