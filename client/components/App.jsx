@@ -9,13 +9,6 @@ import CreateListModal from './CreateListModal.jsx';
 
 const axios = require('axios');
 
-// const HeaderImgCenter = styled.div`
-// display: flex;
-// flex-direction: row;
-// width: 100%;
-// align-items: center;
-// justify-content: center;
-// `;
 const HeaderImg = styled.div`
   flex-direction: row;
   height: 100px;
@@ -59,11 +52,12 @@ class Gallery extends React.Component {
       galleryShown: false,
       imageChosen: null,
       saveModalShown: false,
-      shareModalShown: false,
+      // shareModalShown: false, // Upcoming feature
       createModalShown: false,
       lists: null,
       saved: false,
     };
+    // Method Binding
     this.getStay = this.getStay.bind(this);
     this.getLists = this.getLists.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
@@ -78,7 +72,7 @@ class Gallery extends React.Component {
     this.CreateListModalToggle = this.CreateListModalToggle.bind(this);
   }
 
-  // Invokes getStay with hardcoded stay
+  // Invokes and in turn retrieves data from stay DB and List DB
   componentDidMount() {
     this.getStay(71);
     this.getLists();
@@ -110,6 +104,7 @@ class Gallery extends React.Component {
       });
   }
 
+  // Increments or decrements the imageChose state
   PrevOrNextImg(direction) {
     if (direction === 'Back') {
       // console.log("PrevOrNextImg Invoked");
@@ -118,19 +113,17 @@ class Gallery extends React.Component {
           imageChosen: this.state.imageChosen - 1,
         },
       );
-      // console.log(`PrevOrNextImg Invoked: State.imgChosen: ${this.state.imageChosen}`);
     }
-
     if (direction === 'Forward') {
       this.setState(
         {
           imageChosen: this.state.imageChosen + 1,
         },
       );
-      // console.log(`Forward Triggered: State.imgChosen: ${this.state.imageChosen}`);
     }
   }
 
+  // Toggles the Gallery Modal
   toggleModal(e) {
     const { galleryShown } = this.state;
     const { id } = e.target;
@@ -140,6 +133,7 @@ class Gallery extends React.Component {
     });
   }
 
+  // Opens GalleryModal and presents the first image
   showAllPhotos() {
     const { galleryShown } = this.state;
     this.setState({
@@ -148,19 +142,21 @@ class Gallery extends React.Component {
     });
   }
 
+  // Upcoming Feature to show the Share Modal
   // eslint-disable-next-line class-methods-use-this
   ShareModalToggle() {
     console.log('Share Modal invoked');
   }
 
+  // Toggles the SaveModal
   SaveModalToggle() {
     const { saveModalShown } = this.state;
     this.setState({
       saveModalShown: !saveModalShown,
     });
-    // this.setState(prevState => ({ saveModalShown: !saveModalShown }));
   }
 
+  // Toggles the CreateList Modal
   CreateListModalToggle() {
     this.SaveModalToggle();
     const { createModalShown } = this.state;
@@ -169,29 +165,28 @@ class Gallery extends React.Component {
     });
   }
 
+  // Clicking the heart toggles the save modal to allow user to save to list
   heartClick() {
-    const { saved } = this.state;
-    console.log('heartClick invoked');
     this.SaveModalToggle();
-    // this.setState(prevState => ({ saveModalShown: !saveModalShown }));
   }
 
+  // When Clicking a list this will toggle saved and close the modal
   listClicked() {
+    const { saved } = this.state;
     this.setState({
       saved: !this.state.saved,
     });
     this.SaveModalToggle();
   }
 
-  // Incrment The count of stay
+  // Increment The count of stay ( Upcoming feature )
   // eslint-disable-next-line class-methods-use-this
   IncrementStayCount(currentCount) {
     console.log('Invoked increment Stay count', currentCount );
     const increasedCount = currentCount + 1;
     // console.log(increasedCount);
     // axios.post('/list', {
-    //   firstName: 'Fred',
-    //   lastName: 'Flintstone',
+    //   listName: 'Dream Vacations',
     // })
     //   .then((response) => {
     //     console.log(response);
@@ -201,6 +196,7 @@ class Gallery extends React.Component {
     //   });
   }
 
+  // Toggles heart saved state
   heartClickUnsave() {
     this.setState({
       saved: !this.state.saved,
@@ -224,6 +220,7 @@ class Gallery extends React.Component {
       />
     )
       : <h1>Loading...</h1>;
+
     // If state.stay is true proceed with rendering Images component, else show loading.
     const images = stay ? (
       <Images
@@ -264,12 +261,12 @@ class Gallery extends React.Component {
         />
       )
       : <div />;
-      // Create List Modal
+      // Conditionally Render List Modal
     const createListModal = createModalShown
       ? (
         <CreateListModal
           getLists={this.getLists}
-          currentStay={this.state.stay}
+          currentStay={stay}
           saveModalToggle={this.SaveModalToggle}
           createListModalToggle={this.CreateListModalToggle}
           heartClickUnsave={this.heartClickUnsave}
@@ -297,10 +294,5 @@ class Gallery extends React.Component {
   }
 }
 
-// console.log("Save Modal invoked");
-// const newState = Object.assign({}, this.state);
-// newState.saveModalShown = !this.state.saveModalShown;
-// this.setState(newState);
-// console.log('State after setState:', this.state);
-
 export default Gallery;
+

@@ -180,7 +180,15 @@ width: 100% !important;
 `;
 
 function SaveModal(props) {
-  const { listClicked, saveModalToggle, photos, lists, IncrementStayCount, createListModalToggle} = props;
+  const {
+    listClicked,
+    saveModalToggle,
+    photos, lists,
+    IncrementStayCount,
+    createListModalToggle
+  } = props;
+
+  // Mapp over the data from the list DB
   const mappedLists = lists.map ((listItem) => (
     <ListItem
       key={listItem._id}

@@ -2,12 +2,15 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const { Stay, List } = require('../database/index');
-// const { List } = require('../database/list');
 
 const app = express();
-const port = 3001;
+
+const port = 3000;
+// Body parsing middleware
 app.use(bodyParser.json());
+// Static Dir for public use
 app.use('/', express.static(path.join(__dirname, '../client/dist')));
+
 // Get all stays
 app.get('/gallery/stays', (req, res) => {
   Stay.find({}, (err, data) => {
@@ -37,9 +40,9 @@ app.get('/gallery/list', (req, res) => {
     res.status(200).send(data);
   });
 });
+
 // Post to list collection
 app.post('/gallery/list', (req, res) => {
-  //console.log("Post req ", req.body);
   List.create(req.body, (err, data) => {
     if (err) {
       res.status(400).send(err);
@@ -49,5 +52,5 @@ app.post('/gallery/list', (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
+  console.log(`The Gallery Componenent server listening at http://localhost:${port}`);
 });

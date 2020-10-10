@@ -1,9 +1,10 @@
 const mongoose = require('mongoose');
 const { List } = require('../database/index');
 
-//db.dropDatabase();
+// UNcommment below if you wish to drop the database before seeding
+// db.dropDatabase();
 
-// Seed the DB
+// Create a single array with a "List" OBJ
 const dataToSeed = () => {
   const results = [];
   const obj = {};
@@ -13,7 +14,7 @@ const dataToSeed = () => {
   results.push(obj);
   return results;
 };
-
+// Seed the list array
 const seedTheDB = () => {
   const arr = dataToSeed();
   List.create(arr, (err, docs) => {

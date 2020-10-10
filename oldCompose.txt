@@ -1,0 +1,23 @@
+version: "3.7"
+
+services:
+  app:
+    build: .
+    ports:
+     - 3000:3000
+      depends_on:
+        - 'mongo'
+        restart: on-failure
+        environment:
+          mongohost: mongo
+          mongoUser: root
+          mongoPsswd: student
+          mongo_db:
+        command: sh -c 'npm start'
+
+
+
+# mysql:
+#   build: ./database
+#   environment:
+#     MYSQL_ ROOT_PASSWORD: student
