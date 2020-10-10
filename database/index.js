@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const listSeed = require('../seeding/ListSeeding.js');
+const seed = require('../seeding/seeding.js');
 
 // Docker Remote service
 // "IPv4Address": "172.17.0.2/16",
@@ -15,6 +17,8 @@ const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => {
   console.log('Connected to the DataBase');
+  listSeed.seedTheList();
+  seed.seed();
 });
 
 // Define Schema
@@ -47,9 +51,14 @@ const ListSchema = mongoose.Schema({
 
 // Create model
 const List = mongoose.model('List', ListSchema);
+// line below added for docker dev
+module.exports.List = List;
+module.exports.Stay = Stay;
+module.exports.db = db;
 
-module.exports = {
-  Stay,
-  List,
-  db,
-};
+// for local dev
+// module.exports = {
+//   Stay,
+//   List,
+//   db,
+// };

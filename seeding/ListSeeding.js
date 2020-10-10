@@ -1,7 +1,10 @@
 const mongoose = require('mongoose');
-const { List } = require('../database/index');
-
-//db.dropDatabase();
+// uncomment for  docker dev
+const model = require('../database/index');
+// uncomment for local dev
+// const { List } = require('../database/index');
+// uncomment for local dev
+// db.dropDatabase();
 
 // Seed the DB
 const dataToSeed = () => {
@@ -16,7 +19,8 @@ const dataToSeed = () => {
 
 const seedTheDB = () => {
   const arr = dataToSeed();
-  List.create(arr, (err, docs) => {
+  // model to List.create for Docker dev
+  model.List.create(arr, (err, docs) => {
     if (err) {
       console.log(`Error in seeding JS line 86 : ${err}`);
       // callback(err);
@@ -27,4 +31,8 @@ const seedTheDB = () => {
   });
 };
 
-seedTheDB();
+// Uncomment for local dev
+// seedTheDB();
+
+// Uncomment for ec2
+module.exports.seedTheList = seedTheDB;
