@@ -86,7 +86,7 @@ class App extends React.Component {
 
   // Gets selected stay
   getStay(roomId) {
-    axios(`/stays/${roomId}`)
+    axios(`/gallery/stays/${roomId}`)
       .then((response) => {
         this.setState({
           stay: response.data[0],
@@ -99,7 +99,7 @@ class App extends React.Component {
 
   // Get All Lists in list DB
   getLists() {
-    axios('/list')
+    axios('/gallery/list')
       .then((response) => {
         this.setState({
           lists: response.data,

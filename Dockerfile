@@ -13,8 +13,6 @@ RUN npm install --production
 # What source code do you want to copy, and where to put it?
 COPY . .
 
-
-
 # What port will the container talk to the outside world with once created?
 EXPOSE 3000
 

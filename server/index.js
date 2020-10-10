@@ -9,7 +9,7 @@ const port = 3000;
 app.use(bodyParser.json());
 app.use('/', express.static(path.join(__dirname, '../client/dist')));
 // Get all stays
-app.get('/stays', (req, res) => {
+app.get('/gallery/stays', (req, res) => {
   Stay.find({}, (err, data) => {
     if (err) {
       res.status(400).send(err);
@@ -18,7 +18,7 @@ app.get('/stays', (req, res) => {
   });
 });
 // Specific Stay
-app.get('/stays/:roomId', (req, res) => {
+app.get('/gallery/stays/:roomId', (req, res) => {
   const { roomId } = req.params;
   Stay.find({ room_id: roomId }).exec((err, data) => {
     if (err) {
@@ -29,7 +29,7 @@ app.get('/stays/:roomId', (req, res) => {
   });
 });
 // Get All Lists
-app.get('/list', (req, res) => {
+app.get('/gallery/list', (req, res) => {
   List.find({}, (err, data) => {
     if (err) {
       res.status(400).send(err);
@@ -38,7 +38,7 @@ app.get('/list', (req, res) => {
   });
 });
 // Post to list collection
-app.post('/list', (req, res) => {
+app.post('/gallery/list', (req, res) => {
   //console.log("Post req ", req.body);
   List.create(req.body, (err, data) => {
     if (err) {
