@@ -2,7 +2,6 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const { Stay, List } = require('../database/index');
-// const { List } = require('../database/list');
 
 const app = express();
 const port = 3000;
@@ -39,7 +38,6 @@ app.get('/gallery/list', (req, res) => {
 });
 // Post to list collection
 app.post('/gallery/list', (req, res) => {
-  //console.log("Post req ", req.body);
   List.create(req.body, (err, data) => {
     if (err) {
       res.status(400).send(err);
