@@ -1,16 +1,15 @@
 const mongoose = require('mongoose');
 
-// Docker Remote service
-// "IPv4Address": "172.17.0.2/16",
-
-// 'mongodb://172.17.0.2:27017/gallery'
-// For Deployment on EC2
-mongoose.connect('mongodb://172.17.0.2:27017/gallery', { useNewUrlParser: true });
-// For DEV on my Local machine
-// mongoose.connect('mongodb://localhost/gallery', { useNewUrlParser: true });
+mongoose.connect('mongodb://localhost/gallery', { useNewUrlParser: true });
 
 // Connection shortcut
 const db = mongoose.connection;
+// Test connection
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', () => {
+  console.log('Connected to the DataBase');
+});
+
 // Test connection
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => {
