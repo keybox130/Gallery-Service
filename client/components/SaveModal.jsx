@@ -43,7 +43,7 @@ const SaveModalHeader = styled.div`
   justify-content: flex-start;
   position: relative;
   min-height: 30px !important;
-  padding: 20px 24px !important;
+  padding: 20px 24px;
   border-bottom: 1px solid rgb(235, 235, 235) !important;
 `;
 const SaveModalHeaderText = styled.div`

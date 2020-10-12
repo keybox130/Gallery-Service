@@ -107,7 +107,6 @@ class Gallery extends React.Component {
   // Increments or decrements the imageChose state
   PrevOrNextImg(direction) {
     if (direction === 'Back') {
-      // console.log("PrevOrNextImg Invoked");
       this.setState(
         {
           imageChosen: this.state.imageChosen - 1,
@@ -142,7 +141,7 @@ class Gallery extends React.Component {
     });
   }
 
-  // Upcoming Feature to show the Share Modal
+  // Show the Share Modal ( UPCOMING FUNCTIONALITY )
   // eslint-disable-next-line class-methods-use-this
   ShareModalToggle() {
     console.log('Share Modal invoked');
@@ -179,7 +178,7 @@ class Gallery extends React.Component {
     this.SaveModalToggle();
   }
 
-  // Increment The count of stay ( Upcoming feature )
+  // Increment The count of stay ( UPCOMING FUNCTIONALITY )
   // eslint-disable-next-line class-methods-use-this
   IncrementStayCount(currentCount) {
     console.log('Invoked increment Stay count', currentCount );
@@ -219,7 +218,7 @@ class Gallery extends React.Component {
         heartClickUnsave={this.heartClickUnsave}
       />
     )
-      : <h1>Loading...</h1>;
+      : <h1>A stay worth waiting for...</h1>;
 
     // If state.stay is true proceed with rendering Images component, else show loading.
     const images = stay ? (
@@ -229,7 +228,7 @@ class Gallery extends React.Component {
         showAllPhotos={this.showAllPhotos}
       />
     )
-      : <h1>Loading Images...</h1>;
+      : <h1>A stay worth waiting for...</h1>;
 
     // Conditionally Render Gallery Modal
     const gallerymodal = (galleryShown && stay.photos)

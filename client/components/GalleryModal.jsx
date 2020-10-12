@@ -119,7 +119,6 @@ const NextButton = styled(PreviousButton)`
 const ImgCol = styled.div`
   height: 760px;
   width: 1350px;
-  overflow: hidden;
   display:flex;
   flex-direction:column;
   align-items: center;
@@ -137,6 +136,7 @@ const GalleryImage = styled.img`
 `;
 const ImgDescDiv = styled.div`
 font-family: 'Montserrat', sans-serif;
+
 `;
 const EmptyHeart = styled.button`
   position: relative;
@@ -223,7 +223,7 @@ class GalleryModal extends React.Component {
       imageSelected,
       saved,
       heartClick,
-      heartClickUnsav
+      heartClickUnsave
     } = this.props;
 
     // Get the ID num of the last image
@@ -252,7 +252,7 @@ class GalleryModal extends React.Component {
       );
 
     const heart = saved ? (
-      <FilledHeart type="button" onClick= {heartClick}>
+      <FilledHeart type="button" onClick= {heartClickUnsave}>
         <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false"><path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z" /></svg>
       </FilledHeart>
     ) : (

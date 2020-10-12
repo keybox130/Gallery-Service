@@ -218,16 +218,14 @@ class CreateListModal extends React.Component {
     event.preventDefault();
   }
 
-  // Axios for posting the list
+  // Create a New List Axios POST
   postList(ListName) {
-    axios.post('/list', {
+    console.log("PostList Invoked");
+    axios.post('/gallery/list', {
       title: ListName,
       number: 1,
       tmb_url: this.props.currentStay.photos[0].photo_url,
     })
-      .then((response) => {
-        console.log(response);
-      })
       .catch((error) => {
         console.log(error);
       });
