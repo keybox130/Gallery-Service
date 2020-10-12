@@ -1,4 +1,4 @@
-# Project Name
+# Vacation Rental - Image Gallery
 
 > This is the Gallery Component of a Vacation rental booking website.
 
