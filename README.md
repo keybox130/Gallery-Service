@@ -1,7 +1,4 @@
 # Vacation Rental - Image Gallery
-![Photo Gallery]
-(https://imgur.com/8xqSKOD)
-
 > This is the Gallery Component of a Vacation rental booking website.
 
 > It is lovingly crafted by Emmanuel Mota using the following:
