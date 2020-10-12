@@ -1,5 +1,5 @@
 import React from 'react';
-import {mount, shallow} from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import App from '../client/components/App.jsx';
 
 describe('<App />', () => {

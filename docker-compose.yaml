@@ -10,10 +10,3 @@ services:
     ports:
      - "80:3000"
 
-
-
-
-# mysql:
-#   build: ./database
-#   environment:
-#     MYSQL_ ROOT_PASSWORD: student

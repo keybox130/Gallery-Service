@@ -1,5 +1,5 @@
 import React from 'react';
-import {mount, shallow} from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import Header from '../client/components/Header.jsx';
 
 it('should render the Header Component to the DOM', () => {
