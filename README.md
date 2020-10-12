@@ -1,4 +1,6 @@
 # Vacation Rental - Image Gallery
+![Image Gallery]
+(https://imgur.com/8xqSKOD)
 
 > This is the Gallery Component of a Vacation rental booking website.
 
