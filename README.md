@@ -49,7 +49,33 @@ An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 - react-dom
 - styled-components
 ```
-## Development
+## API
+
+GET /gallery/stays/:stayid
+/gallery/stays/1
+Returns:
+[
+    {
+        "_id": "5f83df6beb92851ce958618f",
+        "room_id": 100,
+        "list": "",
+        "title": "Charming Craftsman East Sac/Midtown Apartment",
+        "rating": 3.6,
+        "rating_count": 249,
+        "super_host": false,
+        "location": "Corona de Tucson, California, United States",
+        "photos": [
+            {
+                "_id": "5f83df6beb92851ce9586190",
+                "id": 1,
+                "photo_url": "https://imagesfec.s3.amazonaws.com/airbnb/2/f677abc9-50b6-48d9-95d0-f0010042.jpg",
+                "description": "The Cob House is in a very private setting all your own. Bring a camp stove and an ice chest and make your meals on the picnic table there."
+            }
+        ],
+        "__v": 0
+    }
+]
+
 
 ### Installing Dependencies
 
