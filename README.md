@@ -51,7 +51,7 @@ An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 ```
 ## API
 
-GET /gallery/stays/:stayid
+> GET /gallery/stays/:stayid
 /gallery/stays/1
 Returns:
 [
